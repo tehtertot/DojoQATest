@@ -55,11 +55,7 @@ namespace DojoQA.Controllers
             if (result.Succeeded) {
                 return new OkObjectResult(new JsonResult(new { success = true, user = newUser}));
             }
-            //determine how to send back specific errors--create error object?
-                //or just set regex for frontend password
-            //does not meet authorization requirements
-            //loop through result.Errors and add errors to ModelState
-                // eg. ModelState.AddModelError("login", "Invalid username and/or password");
+            ModelState.AddModelError("registration", "email is already registered");
             return BadRequest(ModelState);
         }
 

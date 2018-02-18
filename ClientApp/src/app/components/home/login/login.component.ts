@@ -9,27 +9,28 @@ import { UserService } from '../../../services/user.service';
 
 @Component({
     selector: 'login',
-    templateUrl: './login.component.html',
-    styles: ['./login.component.css']
+    templateUrl: './login.component.html'
 })
 
 export class LoginComponent {
     public login: User = new User();
-    loginerrors: String = "";
+    public loginerrors: string = null;
 
-    constructor(private _userService: UserService, private _router: Router) { }
+    constructor(private _userService: UserService, private _router: Router) { 
+        this.login.Email = "ncaldwell@codingdojo.com";
+        this.login.Password = "Tiavgp2r!";
+    }
 
     userlogin() {
-        console.log(this.login);
         this._userService.loginUser(this.login) 
             .subscribe(
                 (u) => this.successfulRedirect(u.auth_token), 
-                (err) => console.log(err));
+                (err) => this.loginerrors = err.error.login);
     }
 
     successfulRedirect(token: string) {
         localStorage.setItem('auth_token', token);
         this._userService.setLoggedInStatus(true);
-        this._router.navigate(['/search/questions']);
+        this._router.navigate(['/questions/all']);
     }
 }

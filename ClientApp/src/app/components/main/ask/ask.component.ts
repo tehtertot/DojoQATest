@@ -39,7 +39,7 @@ export class AskComponent implements OnInit {
             this._questionService.addQuestion(this.question)
                 .subscribe((res) => {
                     if (res) {
-                        this._router.navigate(['/search/questions']);
+                        this._router.navigate(['/questions/all']);
                     }
                     else {
                         this.error = "Error adding question to the database. Please try again.";

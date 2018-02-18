@@ -32,10 +32,6 @@ export class QuestionsComponent {
         this._router.navigate(['/search/questions', id]);
     }
 
-    public askQuestion() {
-        this._router.navigate(['/search/ask']);
-    }
-
     public addFilterTag(t: string) {
         //not yet in list -- add
         // if (this.searchTags.hasOwnProperty(t)) {

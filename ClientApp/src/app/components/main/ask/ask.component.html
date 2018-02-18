@@ -1,20 +1,33 @@
-<h1>Ask a Question</h1>
-<p class="rederror">{{error}}</p>
+<div class="row center-align">
+<div class="col s12 m6">
+<div class="card-panel gray">
+<h3>Ask a Question</h3>
+<p class="showerror">{{error}}</p>
 <form (submit)="addQuestion()" #questionForm="ngForm">
-    <p><input name="title" required [(ngModel)]="question.QuestionTitle" #title="ngModel" class="form-control" placeholder="Title" minlength="10" maxlength="60"></p>
-    <textarea name="content" placeholder="type your full question here..." required [(ngModel)]="question.QuestionText" #content="ngModel" class="form-control">
-    </textarea>
+    <div class="row">
+        <div class="input-field col s12">
+            <input name="title" required [(ngModel)]="question.QuestionTitle" #title="ngModel" class="validate" minlength="10" maxlength="60">
+            <label for="title">Title (10-60 characters)</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="input-field col s12">
+            <textarea name="content" required [(ngModel)]="question.QuestionText" #content="ngModel" class="materialize-textarea"></textarea>
+            <label for="content">Question</label>
+        </div>
+    </div>
     
-    <p>Select Tags:</p>
-    <div class="col-sm-3" *ngFor="let c of tagList">
-        <p><i>{{c.categoryName}}</i></p>
-        <p *ngFor="let t of c.tags" class="taglist"><input type="checkbox" (change)="addTag($event.target.value)" value={{t.tagId}}>{{t.tagName}}</p>
+    <div class="input-field col s3" *ngFor="let cat of tagList">
+        <select multiple>
+            <option *ngFor="let t of cat.tags" value="{{t.tagId}}">{{t.tagName}}</option>
+        </select>
+        <label>{{cat.categoryName}}</label>
     </div>
    
-    <br>
-    
-    <div class="col-sm-12">
-        <input type="submit" value="Ask" [disabled]="!questionForm.form.valid" class="btn btn-primary">
-    </div>
+    <input [disabled]="!questionForm.valid" type="submit" value="Submit Question" class="waves-effect waves-light btn">
 </form>
 
+</div>
+</div>
+</div>

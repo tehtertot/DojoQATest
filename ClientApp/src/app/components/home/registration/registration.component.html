@@ -1,6 +1,7 @@
 <div class="row center-align">
 <div class="col s12 m6">
 <div class="card-panel gray">
+    <p class="showerror">{{regerrors}}</p>
     <form (submit)="register(); regForm.reset()" #regForm="ngForm">
         <div class="row">
             <div class="input-field col s12">
@@ -40,8 +41,7 @@
                 <label for="confirm">Confirm Password</label>
             </div>
         </div>
-        <input *ngIf="!regForm.valid" type="submit" value="Register" class="btn disabled">
-        <input *ngIf="regForm.valid" type="submit" value="Register" class="waves-effect waves-light btn">
+        <input [disabled]="!regForm.valid" type="submit" value="Register" class="waves-effect waves-light btn">
     </form>
 </div>
 </div>

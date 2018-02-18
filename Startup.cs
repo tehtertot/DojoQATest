@@ -23,7 +23,7 @@ namespace DojoQA
         }
 
         public IConfiguration Configuration { get; }
-        private const string SecretKey = "abc123"; //get this from somewhere secure
+        private const string SecretKey = "1234567890QWERTYUIOPasdfghjklZXCVBNM"; //get this from somewhere secure
         private readonly SymmetricSecurityKey _signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(SecretKey));
 
         public void ConfigureServices(IServiceCollection services)
@@ -118,12 +118,13 @@ namespace DojoQA
             app.UseAuthentication();
             
 
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
-            });
+            // app.UseMvc(routes =>
+            // {
+            //     routes.MapRoute(
+            //         name: "default",
+            //         template: "{controller}/{action=Index}/{id?}");
+            // });
+            app.UseMvc();
 
             app.UseSpa(spa =>
             {
