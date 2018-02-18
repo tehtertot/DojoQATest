@@ -1,8 +1,7 @@
 // tools
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs';
+import { Observable } from 'rxjs';
 
 // models
 import { Leader } from '../models/Leader';

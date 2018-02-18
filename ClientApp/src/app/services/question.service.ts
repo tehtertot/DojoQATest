@@ -1,9 +1,8 @@
 // tools
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { UserAuthInterceptor } from '../services/userauth.interceptor';
-import 'rxjs';
 
 // models
 import { Question } from '../models/Question';

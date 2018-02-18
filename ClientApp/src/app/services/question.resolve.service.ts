@@ -3,7 +3,7 @@ import { Router, Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@a
 
 import { QuestionService } from './question.service';
 import { QuestionFromServer } from '../models/QuestionFromServer';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class SingleQuestionResolver implements Resolve<QuestionFromServer> {
