@@ -1,0 +1,53 @@
+<h1>Questions</h1>
+<!-- search bar -->
+<p><input type="text" placeholder="search..." class="form-control" [(ngModel)]="searchStr"></p>
+<input type="hidden" [(ngModel)]="searchTags" [value]="searchTags">
+<!-- advanced filters: select tags -->
+<!-- <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a href="#collapse1" data-toggle="collapse" data-parent="#accordion">Filter by Tags</a>
+            </h4>
+        </div>
+        <div id="collapse1" class="panel-collapse collapse">
+            <div class="panel-body">
+                <div class="col-sm-2" *ngFor="let c of allTags">
+                    <p><i>{{c.categoryName}}</i></p>
+                    <p *ngFor="let t of c.tags"><input type="checkbox" (click)="addFilterTag($event.target.value)" value="{{t.tagName}}"> {{t.tagName}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<p></p>
+<p></p>
+
+  <div class="questions" *ngFor="let q of allQuestions | searchfilter:searchStr:searchTags">
+    <div class="question row">
+        <div class="col-sm-3 left-summary">
+            <p></p><p></p>
+            <p class="answer col-sm-6">Answers</p>
+            <p class="upvote col-sm-6">Upvotes</p>
+            <!-- <p class="summary col-sm-4">Views</p> -->
+
+            <p class="answer col-sm-6">{{q.answers.length}}</p>
+            <p class="upvote col-sm-6">{{q.votes}}</p>
+            <!-- <p class="summary col-sm-4">0</p> -->
+        </div>
+        <div class="col-sm-9 right-question">
+            <p class="question-header"><b>{{q.askedByFirstName}} {{q.askedByLastName}} </b>({{q.createdAt | date: 'dd MMM yyyy HH:mm a'}}) asked:</p>
+            <p><a (click)="answerQuestion(q.questionId)">{{q.questionTitle}}</a></p>
+            <p>{{q.questionText | truncate : 125}}</p>
+            <p><label class="tag">TAGS: </label>
+                <label class="tag tag-box" *ngFor="let t of q.tagsString">{{t}}</label>
+            </p>
+        </div>
+    </div>
+</div>
+
+<footer>
+<p>Couldn't find your answer?</p>
+<button class="btn btn-warning" (click)="askQuestion()">Ask a Question</button>
+</footer>

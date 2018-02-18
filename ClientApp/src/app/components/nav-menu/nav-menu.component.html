@@ -1,0 +1,32 @@
+<nav>
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo">DojoQA</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li [routerLinkActive]="['link-active']">
+                <a [routerLink]="['/home']">
+                    <span class='glyphicon glyphicon-home'></span> Home
+                </a>
+            </li>
+            <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
+                <a [routerLink]="['/profile']">
+                    <span class='glyphicon glyphicon-user'></span> Profile
+                </a>
+            </li>
+            <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
+                <a [routerLink]="['/search/questions']">
+                    <span class='glyphicon glyphicon-search'></span> Search
+                </a>
+            </li>
+            <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
+                <a [routerLink]="['/leaderboard']">
+                    <span class='glyphicon glyphicon-tasks'></span> Compete
+                </a>
+            </li>
+            <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
+                <a [routerLink]="['/logout']">
+                    <span class='glyphicon glyphicon-remove'></span> Logout
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

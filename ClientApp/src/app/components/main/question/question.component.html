@@ -1,0 +1,59 @@
+<div id="maincontent">
+        <div class="row question">
+            <h1 class="col-sm-1 letter">Q</h1>
+            <div class="col-sm-10">
+                <h3>{{question.questionTitle}}</h3>
+                <p>{{question.questionText}}</p>
+                <p><a (click)="editQuestion()" *ngIf="question.askedById==userId">Edit</a></p>
+                    <p>
+                        <label class="tag">TAGS: </label>
+                        <label class="tag tag-box" *ngFor="let t of question.tags">{{t.name}}</label>
+                    </p>
+                    <div class="row">
+                        <button [disabled]="!question.canVote" class="btn btn-primary glyphicon glyphicon-thumbs-up" (click)="voteForQuestion(question.questionId)"> {{question.votes}}</button>
+                        <p class="user-info">asked by {{question.askedByFirstName}} {{question.askedByLastName}} ({{question.createdAt | date: 'dd MMM yyyy HH:mm a'}})</p>
+                    </div>
+            </div>
+        </div>
+        
+        <div class="row">
+        <h1 class="col-sm-1 letter">A</h1>
+        <div class="col-sm-11">
+            <div class="row" *ngFor="let a of question.answers">
+                <p>{{a.answerText}}</p>
+                <p><a (click)="editAnswer(a.answerId)" *ngIf="a.answeredById==userId">Edit</a></p>
+                <p class="user-info"><a href="/users/{{a.answeredById}}">{{a.answeredByName}}</a> ({{a.answeredDate | date: 'dd MMM yyyy HH:mm a'}})</p>
+                <button class="btn btn-success glyphicon glyphicon-thumbs-up" (click)="voteForAnswer(a.answerId)"> {{a.votes}}</button>
+            </div>
+        </div>
+        </div>
+        <hr>
+        
+        <h3>Add Your Answer</h3>
+        <form (submit)="submitAnswer()" #answerForm="ngForm">
+            <textarea name="content" required [(ngModel)]="newAnswer.answerText" #content="ngModel" class="form-control">
+            </textarea>
+            <br>
+            <div class="col-sm-12">
+                <input type="submit" value="Answer" [disabled]="!answerForm.form.valid" class="btn btn-success">
+            </div>
+        </form>
+        
+        </div>
+        
+        <div id="editQModal" class="modal">
+            <form (submit)="updateQuestion()" #editQForm="ngForm">
+                <input name="title" required [(ngModel)]="questionUpdate.QuestionTitle" #title="ngModel" class="form-control">
+                <textarea name="content" required [(ngModel)]="questionUpdate.QuestionText" #content="ngModel" class="form-control"></textarea>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button (click)="cancelQEdit()" type="button" class="btn btn-default">Cancel</button>
+            </form>
+        </div>
+        
+        <div id="editAModal" class="modal">
+            <form (submit)="updateAnswer()" #editAForm="ngForm">
+                <textarea name="content" required [(ngModel)]="answerUpdate.answerText" #content="ngModel" class="form-control"></textarea>
+                <button type="submit" class="btn btn-primary">Update</button>
+                <button (click)="cancelAEdit()" type="button" class="btn btn-default">Cancel</button>
+            </form>
+        </div>

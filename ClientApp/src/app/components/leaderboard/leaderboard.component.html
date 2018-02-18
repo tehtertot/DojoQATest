@@ -1,0 +1,32 @@
+<h1>Leaderboard</h1>
+<table class="table table-bordered table-dark">
+    <tr class="headerrow">
+        <th colspan="3">QUESTIONS</th>
+    </tr>
+    <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Questions + Votes</th>
+    </tr>
+    <tr *ngFor="let l of questionLeaders; let idx = index">
+        <td>{{idx + 1}}</td>
+        <td>{{l.name}}</td>
+        <td>{{l.count}}</td>
+    </tr>
+</table>
+
+<table class="table table-bordered table-dark">
+    <tr class="headerrow">
+        <th colspan="3">ANSWERS</th>
+    </tr>
+    <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Answers + Votes</th>
+    </tr>
+    <tr *ngFor="let l of answerLeaders; let idx = index">
+        <td>{{idx + 1}}</td>
+        <td>{{l.name}}</td>
+        <td>{{l.count}}</td>
+    </tr>
+</table>

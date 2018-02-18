@@ -1,0 +1,56 @@
+<h1>Edit Your Info</h1>
+<form (submit)="updateProfile()" #editForm="ngForm">
+    <div class="row">
+        <div class="col-sm-4"><label>Email:</label></div>
+        <div class="col-sm-7">
+            <input type="text" name="email" disabled [(ngModel)]="user.Email" #email="ngModel" class="form-control">
+        </div>
+    </div>
+
+    <br>
+
+    
+    <div class="row">
+        <div class="col-sm-4"><label>First Name:</label></div>
+        <div class="col-sm-7">
+          <input type="text" name="firstName" required [(ngModel)]="user.FirstName" #firstName="ngModel" class="form-control">
+        </div>
+    </div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-6 error" *ngIf="!firstName.valid && (firstName.dirty || firstName.touched)">First name is required</div>
+    
+    <br>
+    
+    <div class="row">
+        <div class="col-sm-4"><label>Last Name:</label></div>
+        <div class="col-sm-7">
+          <input type="text" name="lastName" required [(ngModel)]="user.LastName" #lastName="ngModel" class="form-control">
+        </div>
+    </div>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-6 error" *ngIf="!lastName.valid && (lastName.dirty || lastName.touched)">Last name is required</div>
+
+    <br>
+    
+    <div class="row">
+        <div class="col-sm-4"><label>LinkedIn URL:</label></div>
+        <div class="col-sm-7">
+            <input type="text" name="linkedin" [(ngModel)]="user.LinkedInAccountURL" #linkedin="ngModel" class="form-control">
+        </div>
+    </div>
+    
+    <br>
+
+    <div class="form-group row">
+        <label class="col-sm-4 col-form-label">Current Stack:</label>
+        <div class="col-sm-7">
+            <select id="select" class="form-control" name="stack" #stack="ngModel" [(ngModel)]="user.CurrentStack">
+                <option *ngFor = "let s of stacks; let idx = index" [ngValue]="idx">{{s}}</option>
+            </select>
+        </div>
+    </div>
+
+    <br>
+    
+    <input type="submit" value="Update" [disabled]="!editForm.form.valid" class="btn btn-primary">
+</form>

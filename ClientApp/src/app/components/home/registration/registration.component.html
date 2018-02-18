@@ -1,0 +1,48 @@
+<div class="row center-align">
+<div class="col s12 m6">
+<div class="card-panel gray">
+    <form (submit)="register(); regForm.reset()" #regForm="ngForm">
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" id="firstname" name="firstname" required [(ngModel)]="user.FirstName" #firstname="ngModel" autocomplete="off" minlength="2" class="validate">
+                <label for="firstname">First Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" id="lastname" name="lastname" required [(ngModel)]="user.LastName" #lastname="ngModel" autocomplete="off" minlength="2" class="validate">
+                <label for="lastname">Last Name</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="email" id="email" name="email" required [(ngModel)]="user.Email" #email="ngModel" autocomplete="off" class="validate">
+                <label for="email">Email Address</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="stack" name="stack" [(ngModel)]="user.CurrentStack" #stack="ngModel" class="validate">
+                    <option *ngFor="let s of stacks; let idx=index" [ngValue]="idx">{{s}}</option>
+                </select>
+                <label for="stack">Current Stack</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="password" id="password" name="password" required [(ngModel)]="user.Password" #password="ngModel" autocomplete="off" validateEqual="confirm" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" class="validate">
+                <label for="password">Password</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="password" id="confirm" name="confirm" required [(ngModel)]="user.confirmPassword" #confirm="ngModel" autocomplete="off" validateEqual="password" reverse="false" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" class="validate">
+                <label for="confirm">Confirm Password</label>
+            </div>
+        </div>
+        <input *ngIf="!regForm.valid" type="submit" value="Register" class="btn disabled">
+        <input *ngIf="regForm.valid" type="submit" value="Register" class="waves-effect waves-light btn">
+    </form>
+</div>
+</div>
+</div>

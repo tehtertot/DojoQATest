@@ -1,0 +1,20 @@
+<h1>Ask a Question</h1>
+<p class="rederror">{{error}}</p>
+<form (submit)="addQuestion()" #questionForm="ngForm">
+    <p><input name="title" required [(ngModel)]="question.QuestionTitle" #title="ngModel" class="form-control" placeholder="Title" minlength="10" maxlength="60"></p>
+    <textarea name="content" placeholder="type your full question here..." required [(ngModel)]="question.QuestionText" #content="ngModel" class="form-control">
+    </textarea>
+    
+    <p>Select Tags:</p>
+    <div class="col-sm-3" *ngFor="let c of tagList">
+        <p><i>{{c.categoryName}}</i></p>
+        <p *ngFor="let t of c.tags" class="taglist"><input type="checkbox" (change)="addTag($event.target.value)" value={{t.tagId}}>{{t.tagName}}</p>
+    </div>
+   
+    <br>
+    
+    <div class="col-sm-12">
+        <input type="submit" value="Ask" [disabled]="!questionForm.form.valid" class="btn btn-primary">
+    </div>
+</form>
+
