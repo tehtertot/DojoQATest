@@ -25,26 +25,29 @@
 <p></p>
 
   <mat-card *ngFor="let q of allQuestions | searchfilter:searchStr:searchTags">
-    <mat-card-title><a (click)="answerQuestion(q.questionId)">{{q.questionTitle}}</a></mat-card-title>
-    <mat-card-subtitle>Asked by {{q.askedByFirstName}} {{q.askedByLastName}} ({{q.createdAt | date: 'dd MMM yyyy HH:mm a'}})</mat-card-subtitle>
-    <mat-card-content>
-        <div class="left-summary">
-            <!-- <p></p><p></p> -->
-            <p class="answer">Answers</p>
-            <p class="upvote">Upvotes</p>
-            <!-- <p class="summary col-sm-4">Views</p> -->
-
-            <p class="answer">{{q.answers.length}}</p>
-            <p class="upvote">{{q.votes}}</p>
-            <!-- <p class="summary col-sm-4">0</p> -->
-        </div>
-        <mat-divider [vertical]="true"></mat-divider>
-        <div class="right-question">
+      <mat-card-content class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+          <!-- <div > -->
+              <!-- <p></p><p></p> -->
+        <div class="left-summary" fxFlex="15%">Answers</div>
+        <div class="right-question" fxFlex="75%">
+            <mat-card-title><a (click)="answerQuestion(q.questionId)">{{q.questionTitle}}</a></mat-card-title>
+            <mat-card-subtitle>Asked by {{q.askedByFirstName}} {{q.askedByLastName}} ({{q.createdAt | date: 'dd MMM yyyy HH:mm a'}})</mat-card-subtitle>
             <p>{{q.questionText | truncate : 125}}</p>
             <p><label class="tag">TAGS: </label>
                 <label class="tag tag-box" *ngFor="let t of q.tagsString">{{t}}</label>
             </p>
+                  
+        <!-- </div> -->
+            <!-- <p class="upvote">Upvotes</p> -->
+            <!-- <p class="summary col-sm-4">Views</p> -->
+
+            <!-- <p class="answer">{{q.answers.length}}</p>
+            <p class="upvote">{{q.votes}}</p> -->
+            <!-- <p class="summary col-sm-4">0</p> -->
         </div>
+        <!-- <mat-divider [vertical]="true"></mat-divider>
+        <div class="right-question">
+        </div> -->
     </mat-card-content>  
 </mat-card>
 

@@ -6,6 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 //components
 import { AppComponent } from './app.component';
@@ -61,6 +62,7 @@ import { SearchFilterPipe } from './pipes/searchfilter.pipe';
     FormsModule,
     MaterialModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent
