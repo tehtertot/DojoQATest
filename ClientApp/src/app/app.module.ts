@@ -4,10 +4,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { MaterialModule } from '../material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //components
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
+  import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
   import { LoginComponent } from './components/home/login/login.component';
   import { RegistrationComponent } from './components/home/registration/registration.component';
@@ -57,11 +59,13 @@ import { SearchFilterPipe } from './pipes/searchfilter.pipe';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    MaterialModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: 'home/login', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent, children:
-        [ { path: 'login', component: LoginComponent },
-          { path: 'register', component: RegistrationComponent } ] 
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent
+        // [ { path: 'login', component: LoginComponent },
+        //   { path: 'register', component: RegistrationComponent } ] 
       },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
       { path: 'questions', component: MainComponent, canActivate: [AuthGuard], children: [

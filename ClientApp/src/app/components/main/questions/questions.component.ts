@@ -9,7 +9,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'questions',
-    templateUrl: './questions.component.html'
+    templateUrl: './questions.component.html',
+    styles: ['./questions.component.css']
 })
 export class QuestionsComponent {
     allQuestions: Array<QuestionFromServer>;

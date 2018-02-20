@@ -1,3 +1,48 @@
+<mat-card class="home-card">
+    <mat-card-header *ngIf="regerrors">
+        <mat-card-title>{{regerrors}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form (submit)="register()" #regForm="ngForm"> 
+            <div>
+            <mat-form-field>
+                <input matInput placeholder="First Name" type="text" id="firstname" name="firstname" required [(ngModel)]="user.FirstName" #firstname="ngModel" autocomplete="off" minlength="2">
+            </mat-form-field>
+            </div>
+            <div>
+            <mat-form-field>
+                <input matInput placeholder="Last Name" type="text" id="lastname" name="lastname" required [(ngModel)]="user.LastName" #lastname="ngModel" autocomplete="off" minlength="2">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <input matInput placeholder="Email Address" type="email" id="email" name="email" required [(ngModel)]="user.Email" #email="ngModel" autocomplete="off" minlength="2">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field>
+                <mat-select [(value)]="user.CurrentStack" required placeholder="Current Stack">
+                    <mat-option *ngFor="let s of stacks; let idx=index" [value]="idx">{{s}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div>
+        <mat-form-field>
+            <input matInput placeholder="Password" type="password" name="password" required [(ngModel)]="user.Password" #password="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" matTooltip="at least 6 characters, including at least 1 upper, 1 lower, 1 number, and 1 special character" validateEqual="confirm">
+        </mat-form-field>
+        </div>
+        <div>
+        <mat-form-field>
+            <input matInput placeholder="Confirm Password" type="password" name="confirm" required [(ngModel)]="user.confirmPassword" #confirm="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" validateEqual="password" reverse="false">
+        </mat-form-field>
+        </div>     
+        
+        <button mat-raised-button color="primary" [disabled]="!regForm.valid">Register</button>
+    </form>
+    </mat-card-content>
+</mat-card>
+
+<!-- 
 <div class="row center-align">
 <div class="col s12 m6">
 <div class="card-panel gray">
@@ -5,7 +50,6 @@
     <form (submit)="register(); regForm.reset()" #regForm="ngForm">
         <div class="row">
             <div class="input-field col s12">
-                <input type="text" id="firstname" name="firstname" required [(ngModel)]="user.FirstName" #firstname="ngModel" autocomplete="off" minlength="2" class="validate">
                 <label for="firstname">First Name</label>
             </div>
         </div>
@@ -23,8 +67,6 @@
         </div>
         <div class="row">
             <div class="input-field col s12">
-                <select id="stack" name="stack" [(ngModel)]="user.CurrentStack" #stack="ngModel" class="validate">
-                    <option *ngFor="let s of stacks; let idx=index" [ngValue]="idx">{{s}}</option>
                 </select>
                 <label for="stack">Current Stack</label>
             </div>
@@ -45,4 +87,4 @@
     </form>
 </div>
 </div>
-</div>
+</div> -->

@@ -1,24 +1,45 @@
-<div class="row center-align">
-<div class="col s12 m6">
-<div class="card-panel gray">
-    <p class="showerror">{{loginerrors}}</p>
-    <form (submit)="userlogin()" #loginForm="ngForm"> 
-        <div class="row">
-            <div class="input-field col s12">
-                <input type="email" id="email" name="email" required [(ngModel)]="login.Email" #email="ngModel" autocomplete="off" class="validate">
-                <label for="email">Email</label>
-            </div>
-        </div>
-    
-        <div class="row">
-            <div class="input-field col s12">
-                <input type="password" name="lpassword" required [(ngModel)]="login.Password" #lpassword="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" class="validate">
-                <label for="password">Password</label>
-            </div>
-        </div>
-        <input [disabled]="!loginForm.valid" type="submit" value="Log In" class="waves-effect waves-light btn">
-    </form>
-</div>
-</div>
-</div>
+<mat-tab-group>
+    <mat-tab label="Login">
+            <form (submit)="userlogin()" #loginForm="ngForm"> 
+                    <div>
+                    <mat-form-field>
+                        <input matInput placeholder="Email Address" type="email" id="email" name="email" required [(ngModel)]="login.Email" #email="ngModel" autocomplete="off">
+                    </mat-form-field>
+                    </div>
+                
+                    <div>
+                    <mat-form-field>
+                        <input matInput placeholder="Password" type="password" name="lpassword" required [(ngModel)]="login.Password" #lpassword="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" matTooltip="at least 6 characters, including at least 1 upper, 1 lower, 1 number, and 1 special character">
+                    </mat-form-field>
+                    </div>
+            
+                    <button mat-raised-button color="primary" [disabled]="!loginForm.valid">Log In</button>
+                </form>
+    </mat-tab>
+    <mat-tab label="Registration">
+            <form (submit)="userlogin()" #loginForm="ngForm"> 
+                    <div>
+                    <mat-form-field>
+                        <input matInput placeholder="Email Address" type="email" id="email" name="email" required [(ngModel)]="login.Email" #email="ngModel" autocomplete="off">
+                    </mat-form-field>
+                    </div>
+                
+                    <div>
+                    <mat-form-field>
+                        <input matInput placeholder="Password" type="password" name="lpassword" required [(ngModel)]="login.Password" #lpassword="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" matTooltip="at least 6 characters, including at least 1 upper, 1 lower, 1 number, and 1 special character">
+                    </mat-form-field>
+                    </div>
+            
+                    <button mat-raised-button color="primary" [disabled]="!loginForm.valid">Log In</button>
+                </form>
+    </mat-tab>
+</mat-tab-group>
 
+<!-- <mat-card class="home-card">
+    <mat-card-header *ngIf="loginerrors">
+        <mat-card-title>{{loginerrors}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+    
+    </mat-card-content>
+</mat-card> -->

@@ -1,0 +1,14 @@
+mat-card {
+    width: 90%;
+    margin: 5px auto;
+}
+
+.left-summary {
+    display: inline-block;
+    width: 30%;
+}
+
+.right-question {
+    display: inline-block;
+    width: 65%;
+}

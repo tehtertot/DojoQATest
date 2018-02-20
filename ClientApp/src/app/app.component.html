@@ -1,10 +1,23 @@
-<div class='container-fluid'>
-  <div class='row'>
-    <div class='col-sm-3'>
-      <app-nav-menu></app-nav-menu>
-    </div>
-    <div class='col-sm-9 body-content'>
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-</div>
+<app-nav-menu></app-nav-menu>
+
+<mat-divider></mat-divider>
+
+<mat-sidenav-container class='mat-elevation-z1'>
+  <mat-sidenav mode="side" opened *ngIf="loggedIn" class="side">
+    <ul>
+      <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
+          <a [routerLink]="['/questions/all']">Search</a>
+      </li>
+      <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
+          <a [routerLink]="['/profile']">Profile</a>
+      </li>
+      <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
+          <a [routerLink]="['/leaderboard']">Rankings</a>
+      </li>
+      <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
+          <a [routerLink]="['/logout']">Logout</a>
+      </li>
+    </ul>
+  </mat-sidenav>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>

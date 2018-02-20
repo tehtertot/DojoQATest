@@ -24,28 +24,29 @@
 <p></p>
 <p></p>
 
-  <div class="questions" *ngFor="let q of allQuestions | searchfilter:searchStr:searchTags">
-    <div class="question row">
-        <div class="col-sm-3 left-summary">
-            <p></p><p></p>
-            <p class="answer col-sm-6">Answers</p>
-            <p class="upvote col-sm-6">Upvotes</p>
+  <mat-card *ngFor="let q of allQuestions | searchfilter:searchStr:searchTags">
+    <mat-card-title><a (click)="answerQuestion(q.questionId)">{{q.questionTitle}}</a></mat-card-title>
+    <mat-card-subtitle>Asked by {{q.askedByFirstName}} {{q.askedByLastName}} ({{q.createdAt | date: 'dd MMM yyyy HH:mm a'}})</mat-card-subtitle>
+    <mat-card-content>
+        <div class="left-summary">
+            <!-- <p></p><p></p> -->
+            <p class="answer">Answers</p>
+            <p class="upvote">Upvotes</p>
             <!-- <p class="summary col-sm-4">Views</p> -->
 
-            <p class="answer col-sm-6">{{q.answers.length}}</p>
-            <p class="upvote col-sm-6">{{q.votes}}</p>
+            <p class="answer">{{q.answers.length}}</p>
+            <p class="upvote">{{q.votes}}</p>
             <!-- <p class="summary col-sm-4">0</p> -->
         </div>
-        <div class="col-sm-9 right-question">
-            <p class="question-header"><b>{{q.askedByFirstName}} {{q.askedByLastName}} </b>({{q.createdAt | date: 'dd MMM yyyy HH:mm a'}}) asked:</p>
-            <p><a (click)="answerQuestion(q.questionId)">{{q.questionTitle}}</a></p>
+        <mat-divider [vertical]="true"></mat-divider>
+        <div class="right-question">
             <p>{{q.questionText | truncate : 125}}</p>
             <p><label class="tag">TAGS: </label>
                 <label class="tag tag-box" *ngFor="let t of q.tagsString">{{t}}</label>
             </p>
         </div>
-    </div>
-</div>
+    </mat-card-content>  
+</mat-card>
 
 <footer>
 <p>Couldn't find your answer?</p>

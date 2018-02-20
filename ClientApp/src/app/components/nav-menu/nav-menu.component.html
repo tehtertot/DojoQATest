@@ -1,22 +1,26 @@
-<nav>
+<mat-toolbar color="primary" class='mat-elevation-z6'>
+    <span>DojoQA</span>
+    <div class="flex-spacer"></div>
+    <span *ngIf="loggedIn" [routerLink]="['/home/logout']">Log Out</span>
+</mat-toolbar>
+<!-- <nav>
     <div class="nav-wrapper">
-        <a href="#" class="brand-logo">DojoQA</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li [routerLinkActive]="['link-active']" *ngIf="!loggedIn">
                 <a [routerLink]="['/home/login']">Sign In/Up</a>
-            </li>
-            <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
-                <a [routerLink]="['/questions/all']">Search</a>
-            </li>
-            <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
-                <a [routerLink]="['/profile']">Profile</a>
-            </li>
-            <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
-                <a [routerLink]="['/leaderboard']">Rankings</a>
-            </li>
-            <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
-                <a [routerLink]="['/logout']">Logout</a>
+                <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
+                    <a [routerLink]="['/questions/all']">Search</a>
+                </li>
+                <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
+                    <a [routerLink]="['/profile']">Profile</a>
+                </li>
+                <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
+                    <a [routerLink]="['/leaderboard']">Rankings</a>
+                </li>
+                <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
+                    <a [routerLink]="['/logout']">Logout</a>
+                </li>
             </li>
         </ul>
     </div>
-</nav>
+</nav> -->
