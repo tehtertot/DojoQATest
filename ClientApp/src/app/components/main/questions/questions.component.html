@@ -41,7 +41,7 @@
             <mat-card-title><a (click)="answerQuestion(q.questionId)">{{q.questionTitle}}</a></mat-card-title>
             <mat-card-subtitle>Asked by {{q.askedByFirstName}} {{q.askedByLastName}} ({{q.createdAt | date: 'dd MMM yyyy HH:mm a'}})</mat-card-subtitle>
             <p>{{q.questionText | truncate : 125}}</p>
-            <p>Tags: <mat-chip *ngFor="let t of q.tagsString">{{t}}</mat-chip></p>
+            <p>Tags: <mat-chip *ngIf="q.stack" color="primary" selected="true">{{q.stack}}</mat-chip> <mat-chip selected="true" color="accent" *ngFor="let t of q.tagsString">{{t}}</mat-chip></p>
         </div>
     </mat-card-content>  
 </mat-card>

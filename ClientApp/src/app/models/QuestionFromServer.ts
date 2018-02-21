@@ -12,4 +12,5 @@ export class QuestionFromServer {
     createdAt: Date;
     answers: Answer[] = [];
     tagsString: string[] = [];
+    stack: string;
 }

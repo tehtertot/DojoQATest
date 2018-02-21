@@ -9,3 +9,8 @@
 .flex-spacer {
   flex-grow: 1;
 }
+
+mat-chip {
+  border-radius: 5px;
+  padding: 4px;
+}
