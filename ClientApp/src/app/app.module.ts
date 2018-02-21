@@ -12,8 +12,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
   import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
-  import { LoginComponent } from './components/home/login/login.component';
-  import { RegistrationComponent } from './components/home/registration/registration.component';
   import { LogoutComponent } from './components/home/logout/logout.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LeaderboardComponent } from './components/leaderboard/leaderboard.component';
@@ -43,8 +41,6 @@ import { SearchFilterPipe } from './pipes/searchfilter.pipe';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    LoginComponent,
-    RegistrationComponent,
     LogoutComponent,
     ProfileComponent,
     LeaderboardComponent,
@@ -65,10 +61,7 @@ import { SearchFilterPipe } from './pipes/searchfilter.pipe';
     FlexLayoutModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent
-        // [ { path: 'login', component: LoginComponent },
-        //   { path: 'register', component: RegistrationComponent } ] 
-      },
+      { path: 'home', component: HomeComponent },
       { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
       { path: 'questions', component: MainComponent, canActivate: [AuthGuard], children: [
           { path: 'all', component: QuestionsComponent, resolve: { allQuestions: AllQuestionsResolver } },
