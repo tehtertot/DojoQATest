@@ -2,22 +2,19 @@
 
 <mat-divider></mat-divider>
 
-<mat-sidenav-container class='mat-elevation-z1'>
-  <mat-sidenav mode="side" opened *ngIf="loggedIn" class="side">
-    <ul>
-      <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
-          <a [routerLink]="['/questions/all']">Search</a>
-      </li>
-      <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
-          <a [routerLink]="['/profile']">Profile</a>
-      </li>
+<mat-sidenav-container class='mat-elevation-z1' (backdropClick)="close('backdrop')">
+  <mat-sidenav id="sidenav" mode="side" opened *ngIf="loggedIn" fixedInViewport="false" fixedTopGap="0" fixedBottomGap="0">
+    <!-- <ul> -->
+      <p><button mat-button [routerLinkActive]="['link-active']" [routerLink]="['/questions/all']">Search</button></p>
+      <p><button mat-button [routerLink]="['/profile']">Profile</button></p>
+      <!-- </li>
       <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
           <a [routerLink]="['/leaderboard']">Rankings</a>
       </li>
       <li [routerLinkActive]="['link-active']" *ngIf="loggedIn">
           <a [routerLink]="['/logout']">Logout</a>
-      </li>
-    </ul>
+      </li> -->
+    <!-- </ul> -->
   </mat-sidenav>
   <router-outlet></router-outlet>
 </mat-sidenav-container>

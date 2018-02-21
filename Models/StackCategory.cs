@@ -3,15 +3,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace DojoQA.Models
 {
-    public class Category : BaseEntity
+    public class StackCategory : BaseEntity
     {
         [Key]
-        public int CategoryId { get; set; }
+        public int StackCategoryId { get; set; }
         public string Name { get; set; }
+        public int SortOrder { get; set; }
 
         public List<Tag> AssociatedTags { get; set; }
 
-        public Category() {
+        public StackCategory() {
             AssociatedTags = new List<Tag>();
         }
     }

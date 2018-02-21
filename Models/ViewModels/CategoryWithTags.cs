@@ -12,9 +12,9 @@ namespace DojoQA.Models
             tags = new List<SimpleTagViewModel>();
         }
 
-        public CategoryWithTagsViewModel(Category category) {
+        public CategoryWithTagsViewModel(StackCategory category) {
             tags = new List<SimpleTagViewModel>();
-            categoryId = category.CategoryId;
+            categoryId = category.StackCategoryId;
             categoryName = category.Name;
             foreach (Tag t in category.AssociatedTags)
             {

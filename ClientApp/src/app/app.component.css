@@ -3,8 +3,12 @@
   .body-content {
     padding-top: 50px;
   }
-  
-  .side {
-    width: 25%;
-  }
+}
+
+#sidenav {
+  width: 200px;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  background: lightgray;
 }

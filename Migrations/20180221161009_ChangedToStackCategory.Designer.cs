@@ -12,9 +12,10 @@ using System;
 namespace DojoQA.Migrations
 {
     [DbContext(typeof(QAContext))]
-    partial class QAContextModelSnapshot : ModelSnapshot
+    [Migration("20180221161009_ChangedToStackCategory")]
+    partial class ChangedToStackCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -214,8 +215,6 @@ namespace DojoQA.Migrations
                     b.Property<DateTime>("CreatedAt");
 
                     b.Property<string>("Name");
-
-                    b.Property<int>("SortOrder");
 
                     b.Property<DateTime>("UpdatedAt");
 

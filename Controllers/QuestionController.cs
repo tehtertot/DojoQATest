@@ -27,7 +27,7 @@ namespace DojoQA.Controllers
         // **************************** QUESTIONS ******************************* //
         [HttpGet("")]
         public List<QuestionWithAnswersViewModel> getAllQuestions() {
-            List<Question> allQuestions = _context.Questions.Include(q => q.AskedBy).Include(q => q.Answers).ThenInclude(a => a.AnsweredBy).Include(q => q.Tags).ThenInclude(t => t.Tag).ThenInclude(x => x.Category).OrderByDescending(q => q.CreatedAt).ToList();
+            List<Question> allQuestions = _context.Questions.Include(q => q.AskedBy).Include(q => q.Answers).ThenInclude(a => a.AnsweredBy).Include(q => q.Tags).ThenInclude(t => t.Tag).ThenInclude(x => x.StackCategory).OrderByDescending(q => q.CreatedAt).ToList();
             List<QuestionWithAnswersViewModel> allQuestionsForView = new List<QuestionWithAnswersViewModel>();
             foreach (Question q in allQuestions) {
                 allQuestionsForView.Add(new QuestionWithAnswersViewModel(q));
@@ -62,7 +62,7 @@ namespace DojoQA.Controllers
             string userId = _caller.Claims.Single(c => c.Type == "id").Value;
             
             //get full question from db (with all joins)
-            Question question = _context.Questions.Include(q => q.Tags).ThenInclude(qt => qt.Tag).ThenInclude(t => t.Category).Include(q => q.AskedBy).Include(q => q.Answers).ThenInclude(a => a.AnsweredBy).SingleOrDefault(q => q.QuestionId == id);
+            Question question = _context.Questions.Include(q => q.Tags).ThenInclude(qt => qt.Tag).ThenInclude(t => t.StackCategory).Include(q => q.AskedBy).Include(q => q.Answers).ThenInclude(a => a.AnsweredBy).SingleOrDefault(q => q.QuestionId == id);
             
             //transform into view model
             QuestionWithAnswersViewModel returnedQ =  new QuestionWithAnswersViewModel(question);
@@ -154,9 +154,9 @@ namespace DojoQA.Controllers
         // ******************************* TAGS ********************************* //
         [HttpGet("tags")]
         public List<CategoryWithTagsViewModel> getAllTagsWithCategories() {
-            List<Category> allCategories = _context.Categories.Include(c => c.AssociatedTags).ToList();
+            List<StackCategory> allCategories = _context.StackCategories.Include(c => c.AssociatedTags).ToList();
             List<CategoryWithTagsViewModel> categoriesWithTags = new List<CategoryWithTagsViewModel>();
-            foreach (Category c in allCategories)
+            foreach (StackCategory c in allCategories)
             {
                 CategoryWithTagsViewModel cwtvm = new CategoryWithTagsViewModel(c);
                 categoriesWithTags.Add(cwtvm);
