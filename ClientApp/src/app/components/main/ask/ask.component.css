@@ -16,3 +16,9 @@ button {
     margin: 20px auto;
     width: 40px;
 }
+
+.tags {
+    margin-top: 40px;
+    margin-left: 5%;
+    width: 90%;
+}

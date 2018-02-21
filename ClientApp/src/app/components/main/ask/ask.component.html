@@ -10,13 +10,21 @@
         <textarea matInput name="content" required [(ngModel)]="question.QuestionText" #content="ngModel" minlength="20" placeholder="Detailed Description"></textarea>
         <mat-hint align="end">{{content.value?.length || 0}} characters</mat-hint>
     </mat-form-field>
-    <p>{{tagList}}</p>
-    <div class="row" *ngFor="let cat of tagList">
-        <select multiple>
-            <option *ngFor="let t of cat.tags" value="{{t.tagId}}">{{t.tagName}}</option>
-        </select>
-        <label>{{cat.categoryName}}</label>
+
+    <div fxLayout fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap="10px" fxLayoutGap.xs="0" class="tags">
+        <mat-form-field fxFlex="30%">
+            <mat-select placeholder="Add Tags" [(ngModel)]="selectedCategory" name="category" (change)="updateTagsToShow()" required>
+                <mat-option *ngFor="let cat of tagList" value="{{cat.categoryName}}">{{cat.categoryName}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    
+        <mat-form-field fxFlex="70%">
+            <mat-select [(ngModel)]="selectedTags" name="tags" multiple required>
+                <mat-option *ngFor="let t of filteredTagList.tags" value="{{t.tagId}}">{{t.tagName}}</mat-option>
+            </mat-select>
+        </mat-form-field>
     </div>
+
     <button [disabled]="!questionForm.valid" mat-raised-button color="primary">Ask</button>
 </form>
    

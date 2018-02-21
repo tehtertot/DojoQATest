@@ -5,5 +5,5 @@ export class Question {
     QuestionTitle: string;
     QuestionText: string;
     AskedByUser: string;
-    Tags: Array<SimpleTag> = [];
+    Tags: Array<number> = [];
 }

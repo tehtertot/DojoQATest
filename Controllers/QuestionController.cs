@@ -43,9 +43,9 @@ namespace DojoQA.Controllers
             q.AskedBy = user;
             q.QuestionTitle = question.QuestionTitle;
             q.QuestionText = question.QuestionText;
-            //add tags to question model (relationships  will be saved when question is saved)
-            foreach (TagViewModel item in question.Tags) {
-                q.Tags.Add(new QuestionTag(item.tagId));
+            // add tags to question model (relationships  will be saved when question is saved)
+            foreach (int id in question.Tags) {
+                q.Tags.Add(new QuestionTag(id));
             }
             try {
                 _context.Questions.Add(q);
