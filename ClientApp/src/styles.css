@@ -1,33 +1,10 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-
-
 .showerror {
   color: darkred;
   font-style: italic;
 }
 
-.home-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.home-form > * {
-  width: 80%;
-  margin: 0 auto;
-  padding-top: 5%;
-  text-align: center;
-}
-
-mat-tab-group {
-  margin: 0 auto;
-  width: 60%;
-  text-align: center;
-}
-
-.submit-button {
-  width: 40px;
-}
 
 .flex-spacer {
   flex-grow: 1;

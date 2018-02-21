@@ -11,7 +11,8 @@ import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
     selector: 'ask',
-    templateUrl: './ask.component.html'
+    templateUrl: './ask.component.html',
+    styleUrls: ['./ask.component.css']
 })
 export class AskComponent implements OnInit {
     public question: Question = new Question();

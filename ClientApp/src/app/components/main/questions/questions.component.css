@@ -1,15 +1,16 @@
-.container {
+mat-card {
     box-sizing: border-box;
-    width: 90%;
+    width: 95%;
     margin: 5px auto;
+    padding: 2%;
 }
 
 .left-summary {
-    display: inline-block;
-    width: 30%;
+    text-align: center;
+    margin-right: 30px;
 }
 
-.right-question {
-    display: inline-block;
-    width: 65%;
+footer {
+    text-align: center;
+    margin-bottom: 20px;
 }

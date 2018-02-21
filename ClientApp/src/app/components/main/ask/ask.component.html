@@ -1,33 +1,22 @@
-<div class="row center-align">
-<div class="col s12 m6">
-<div class="card-panel gray">
 <h3>Ask a Question</h3>
 <p class="showerror">{{error}}</p>
-<form (submit)="addQuestion()" #questionForm="ngForm">
-    <div class="row">
-        <div class="input-field col s12">
-            <input name="title" required [(ngModel)]="question.QuestionTitle" #title="ngModel" class="validate" minlength="10" maxlength="60">
-            <label for="title">Title (10-60 characters)</label>
-        </div>
-    </div>
+<form (submit)="addQuestion()" #questionForm="ngForm" class="question-form">
+    <mat-form-field hintLabel="10-60 characters">
+        <input matInput placeholder="Title" type="text" name="title" required [(ngModel)]="question.QuestionTitle" #title="ngModel" minlength="10" maxlength="60">
+        <mat-hint align="end">{{title.value?.length || 0}} / 60</mat-hint>
+    </mat-form-field>
 
-    <div class="row">
-        <div class="input-field col s12">
-            <textarea name="content" required [(ngModel)]="question.QuestionText" #content="ngModel" class="materialize-textarea"></textarea>
-            <label for="content">Question</label>
-        </div>
-    </div>
-    
-    <div class="input-field col s3" *ngFor="let cat of tagList">
+    <mat-form-field hintLabel="at least 20 characters">
+        <textarea matInput name="content" required [(ngModel)]="question.QuestionText" #content="ngModel" minlength="20" placeholder="Detailed Description"></textarea>
+        <mat-hint align="end">{{content.value?.length || 0}} characters</mat-hint>
+    </mat-form-field>
+    <p>{{tagList}}</p>
+    <div class="row" *ngFor="let cat of tagList">
         <select multiple>
             <option *ngFor="let t of cat.tags" value="{{t.tagId}}">{{t.tagName}}</option>
         </select>
         <label>{{cat.categoryName}}</label>
     </div>
-   
-    <input [disabled]="!questionForm.valid" type="submit" value="Submit Question" class="waves-effect waves-light btn">
+    <button [disabled]="!questionForm.valid" mat-raised-button color="primary">Ask</button>
 </form>
-
-</div>
-</div>
-</div>
+   

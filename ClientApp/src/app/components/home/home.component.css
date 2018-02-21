@@ -1,0 +1,21 @@
+.home-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.home-form > mat-form-field {
+    width: 70%;
+    margin: 0 auto;
+    padding-top: 5%;
+} 
+
+mat-tab-group {
+    margin: 0 auto;
+    width: 60%;
+    text-align: center;
+}
+
+.submit-button {
+    width: 40px;
+    margin: 20px auto;
+}
