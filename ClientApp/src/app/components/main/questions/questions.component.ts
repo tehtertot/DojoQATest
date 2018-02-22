@@ -5,6 +5,7 @@ import { QuestionFromServer } from '../../../models/QuestionFromServer';
 import { CategoryTag } from '../../../models/CategoryTag';
 
 import { QuestionService } from '../../../services/question.service';
+import { UserService } from '../../../services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -16,10 +17,13 @@ export class QuestionsComponent {
     allQuestions: Array<QuestionFromServer>;
     private searchStr: string = "";
     private allTags: Array<CategoryTag>;
-    // private searchTags: {[s: string]: boolean } = {};
     private searchTags: string[] = [];
+    private searchStack: string;
+    private allStacks;
 
-    constructor(private _questionService: QuestionService, private _router: Router, private _route: ActivatedRoute) { }
+    constructor(private _questionService: QuestionService, private _userService: UserService, private _router: Router, private _route: ActivatedRoute) { 
+        this.allStacks = this._userService.getStacks();
+    }
     
     ngOnInit() {
         this.allQuestions = this._route.snapshot.data.allQuestions;

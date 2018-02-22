@@ -8,12 +8,26 @@ import { SimpleTag } from '../models/SimpleTag';
     name: 'searchfilter'
 })
 export class SearchFilterPipe implements PipeTransform {
-    transform(value: Array<QuestionFromServer>, searchStr: string, searchTags: string[]): Array<QuestionFromServer> {
-        if (!value || searchStr == "") { return value; }
-        console.log(`searchtags are: ${searchTags}`);
-        var options = { keys: ['questionText', 'questionTitle', 'tagsString'] };
+    transform(value: Array<QuestionFromServer>, searchStr: string, searchStack: string): Array<QuestionFromServer> {
+        if (!value || (!searchStr && !searchStack)) { return value; }
+        var options = { keys: ['questionText', 'questionTitle'] };
 
-        var filteredQuestions;
+        console.log(searchStack);
+        //filter by stack if selected
+        if (searchStack != null && searchStack != "") {
+            console.log(searchStack);
+            value = value.filter(q => q.stack == searchStack);
+            //and return results if no search criteria
+            if (searchStr == "") {
+                return value;
+            }
+        }
+        
+        //run fuse with searchStr
+        var fuse = new Fuse(value, options);
+        return fuse.search(searchStr);
+
+        // var filteredQuestions;
         //filtering for questions only with ALL specified tags
         // if (searchTags.length > 0) {
         //     filteredQuestions = value.filter(question => {
@@ -46,9 +60,7 @@ export class SearchFilterPipe implements PipeTransform {
         //     filteredQuestions = value;
         // }
 
-        var fuse = new Fuse(filteredQuestions, options);
         // let filteredQuestions = fuse.search(searchStr);
-        return fuse.search(searchStr);
         // return filteredQuestions;
     }
 

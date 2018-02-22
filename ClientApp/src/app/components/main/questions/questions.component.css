@@ -1,13 +1,29 @@
 mat-card {
     box-sizing: border-box;
     width: 95%;
-    margin: 5px auto;
+    margin: 15px auto;
     padding: 2%;
 }
 
-.left-summary {
+.fullwidth {
+    width: 95%;
+    margin: 20px auto;
+}
+
+.searchbar {
+    width: 100%;
+    height: 35px;
+    padding: 5px 3px;
+    border-radius: 3%;
+}
+
+.stackfilter {
+    vertical-align: top;
+
+}
+
+.summary {
     text-align: center;
-    margin-right: 30px;
 }
 
 footer {

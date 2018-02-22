@@ -1,7 +1,15 @@
-<h1>Questions</h1>
+<div class="spacefromheader"></div>
 <!-- search bar -->
-<p><input type="text" placeholder="search..." class="form-control" [(ngModel)]="searchStr"></p>
-<input type="hidden" [(ngModel)]="searchTags" [value]="searchTags">
+<div class="fullwidth">
+    <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="0">
+        <input [(ngModel)]="searchStr" class="mat-elevation-z2 searchbar" fxFlex="60%" placeholder="search...">
+        <div fxFlex="5%"></div>
+        <select class="mat-elevation-z2 searchbar" fxFlex="35%" [(ngModel)]="searchStack">
+            <option value="">any</option>
+            <option *ngFor="let s of allStacks">{{s}}</option>
+        </select>
+    </div>
+</div>
 <!-- advanced filters: select tags -->
 <!-- <div class="panel-group" id="accordion">
     <div class="panel panel-default">
@@ -21,12 +29,16 @@
     </div>
 </div> -->
 
-<p></p>
-<p></p>
-
-  <mat-card *ngFor="let q of allQuestions | searchfilter:searchStr:searchTags">
-      <mat-card-content class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
-        <div class="left-summary" fxFlex="15%">
+<mat-card *ngFor="let q of allQuestions | searchfilter:searchStr:searchStack" >
+    <mat-card-content class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+        <mat-divider [vertical]="true"></mat-divider>
+        <div class="question" fxFlex="75%">
+            <mat-card-title><a (click)="answerQuestion(q.questionId)">{{q.questionTitle}}</a></mat-card-title>
+            <mat-card-subtitle>Asked by {{q.askedByFirstName}} {{q.askedByLastName}} ({{q.createdAt | date: 'dd MMM yyyy HH:mm a'}})</mat-card-subtitle>
+            <p>{{q.questionText | truncate : 125}}</p>
+            <p>Tags: <mat-chip *ngIf="q.stack" color="primary" selected="true">{{q.stack}}</mat-chip> <mat-chip selected="true" color="accent" *ngFor="let t of q.tagsString">{{t}}</mat-chip></p>
+        </div>
+        <div class="summary" fxFlex="15%">
             <div fxFlex="50%">
                 <p>Answers</p>
                 <p>{{q.answers.length}}</p>
@@ -35,13 +47,6 @@
                 <p>Votes</p>
                 <p>{{q.votes}}</p>
             </div>
-        </div>
-        <mat-divider [vertical]="true"></mat-divider>
-        <div class="right-question" fxFlex="75%">
-            <mat-card-title><a (click)="answerQuestion(q.questionId)">{{q.questionTitle}}</a></mat-card-title>
-            <mat-card-subtitle>Asked by {{q.askedByFirstName}} {{q.askedByLastName}} ({{q.createdAt | date: 'dd MMM yyyy HH:mm a'}})</mat-card-subtitle>
-            <p>{{q.questionText | truncate : 125}}</p>
-            <p>Tags: <mat-chip *ngIf="q.stack" color="primary" selected="true">{{q.stack}}</mat-chip> <mat-chip selected="true" color="accent" *ngFor="let t of q.tagsString">{{t}}</mat-chip></p>
         </div>
     </mat-card-content>  
 </mat-card>
