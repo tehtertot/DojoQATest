@@ -71,8 +71,6 @@ export class QuestionComponent implements OnInit {
     }
 
     editQuestion(): void {
-        this.questionUpdate.QuestionTitle = this.question.questionTitle;
-        this.questionUpdate.QuestionText = this.question.questionText;
         let dialogRef = this.qDialog.open(QuestionEditDialog, {
           width: '50%',
           data: { title: this.question.questionTitle, content: this.question.questionText }
@@ -95,6 +93,28 @@ export class QuestionComponent implements OnInit {
                 }
             });
     }
+
+    editAnswer(answerId): void {
+        let dialogRef = this.qDialog.open(AnswerEditDialog, {
+          width: '50%',
+          data: { questionId: this.question.questionId, content: this.question.answers.filter(a => a.answerId == answerId)[0].answerText }
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+            this.updateAnswer(result);
+        });
+    }
+
+    private updateAnswer(updated) {
+        this.answerUpdate.answerId = this.question.questionId;
+        this.answerUpdate.answerText = updated.content;
+        this._questionService.updateAnswer(this.answerUpdate)
+            .subscribe((res) => {
+                if (res) {
+                    this.question.answers.filter(a => a.answerId == this.answerUpdate.answerId)[0].answerText = this.answerUpdate.answerText;
+                }
+            });
+    }
     
 }
     
@@ -112,42 +132,18 @@ export class QuestionEditDialog {
     }
     
 }
-    // editAnswer(id: number) {
-    //     let answer = this.question.answers.filter(a => a.answerId == id)[0];
-    //     this.answerUpdate.answerId = answer.answerId;
-    //     this.answerUpdate.answerText = answer.answerText;
-    //     let main = document.getElementById('maincontent');
-    //     let modal = document.getElementById('editAModal');
-    //     if (modal && main) {
-    //         main.style.filter = "blur(2px)";
-    //         modal.style.display = "block";
-    //     }
-    // }
 
+@Component({
+    selector: 'answer-edit-dialog',
+    templateUrl: 'answer-edit-dialog.html',
+    styleUrls: ['./question.component.css']
+})
+export class AnswerEditDialog {
 
-    // updateAnswer() {
-    //     this._questionService.updateAnswer(this.answerUpdate)
-    //         .subscribe((res) => {
-    //             if (res) {
-    //                 this.question.answers.filter(a => a.answerId == this.answerUpdate.answerId)[0].answerText = this.answerUpdate.answerText;
-    //             }
-    //             this.closeModal('editAModal');
-    //         })
-    // }
+    constructor(public dialogRef: MatDialogRef<AnswerEditDialog>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
-    //close modals
-    // cancelQEdit() {
-    //     this.closeModal('editQModal');
-    // }
-    // cancelAEdit() {
-    //     this.closeModal('editAModal');
-    // }
-
-    // private closeModal(whichModal: string) {
-    //     let main = document.getElementById('maincontent');
-    //     let modal = document.getElementById(whichModal);
-    //     if (modal && main) {
-    //         main.style.filter = "";
-    //         modal.style.display = "none";
-    //     }
-    // }
+    cancel(): void {
+        this.dialogRef.close();
+    }
+    
+}

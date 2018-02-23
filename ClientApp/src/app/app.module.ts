@@ -22,6 +22,7 @@ import { MainComponent } from './components/main/main.component';
   import { AskComponent } from './components/main/ask/ask.component';
   import { QuestionComponent } from './components/main/question/question.component';
     import { QuestionEditDialog } from './components/main/question/question.component';
+    import { AnswerEditDialog } from './components/main/question/question.component';
 
 //services
 import { AllQuestionsResolver } from './services/allquestions.resolve.service';
@@ -54,6 +55,7 @@ import { SearchFilterPipe } from './pipes/searchfilter.pipe';
     AskComponent,
     QuestionComponent,
     QuestionEditDialog,
+    AnswerEditDialog,
     EqualValidator,
     TruncatePipe,
     SearchFilterPipe
@@ -95,7 +97,8 @@ import { SearchFilterPipe } from './pipes/searchfilter.pipe';
      multi:true}
   ],
   entryComponents: [
-    QuestionEditDialog
+    QuestionEditDialog,
+    AnswerEditDialog
   ],
   bootstrap: [AppComponent]
 })
