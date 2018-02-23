@@ -9,12 +9,6 @@
     padding-top: 5%;
 } 
 
-mat-tab-group {
-    margin: 0 auto;
-    width: 60%;
-    text-align: center;
-}
-
 .submit-button {
     width: 40px;
     margin: 20px auto;

@@ -1,56 +1,38 @@
-<h1>Edit Your Info</h1>
-<form (submit)="updateProfile()" #editForm="ngForm">
-    <div class="row">
-        <div class="col-sm-4"><label>Email:</label></div>
-        <div class="col-sm-7">
-            <input type="text" name="email" disabled [(ngModel)]="user.Email" #email="ngModel" class="form-control">
-        </div>
-    </div>
+<mat-toolbar>
+    <mat-toolbar-row>
+        <span>Edit Your Info</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<form (submit)="updateProfile()" #editForm="ngForm" class="home-form">
+    <mat-form-field>
+        <input matInput placeholder="Email Address" type="email" id="email" name="email" required [(ngModel)]="user.Email" #email="ngModel" disabled>
+    </mat-form-field>
+    
+    <mat-form-field>
+        <input matInput placeholder="First Name" type="text" id="firstName" name="firstName" required [(ngModel)]="user.FirstName" #firstName="ngModel" minlength="2">
+    </mat-form-field>
 
-    <br>
+    <mat-form-field>
+        <input matInput placeholder="Last Name" type="text" id="lastname" name="lastname" required [(ngModel)]="user.LastName" #lastname="ngModel" autocomplete="off" minlength="2">
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-select [(value)]="user.CurrentStack" required placeholder="Current Stack">
+            <mat-option *ngFor="let s of stacks; let idx=index" [value]="idx">{{s}}</mat-option>
+        </mat-select>
+    </mat-form-field>
 
+    <mat-form-field>
+        <input matInput placeholder="LinkedIn Profile" type="text" name="linkedin" #linkedin="ngModel" [(ngModel)]="user.LinkedInAccountURL">
+    </mat-form-field>
     
-    <div class="row">
-        <div class="col-sm-4"><label>First Name:</label></div>
-        <div class="col-sm-7">
-          <input type="text" name="firstName" required [(ngModel)]="user.FirstName" #firstName="ngModel" class="form-control">
-        </div>
-    </div>
-    <div class="col-sm-4"></div>
-    <div class="col-sm-6 error" *ngIf="!firstName.valid && (firstName.dirty || firstName.touched)">First name is required</div>
-    
-    <br>
-    
-    <div class="row">
-        <div class="col-sm-4"><label>Last Name:</label></div>
-        <div class="col-sm-7">
-          <input type="text" name="lastName" required [(ngModel)]="user.LastName" #lastName="ngModel" class="form-control">
-        </div>
-    </div>
-    <div class="col-sm-4"></div>
-    <div class="col-sm-6 error" *ngIf="!lastName.valid && (lastName.dirty || lastName.touched)">Last name is required</div>
+    <!-- resetting password also requires validation of current password. separate form? -->
+    <!-- <mat-form-field>
+        <input matInput placeholder="Password" type="password" name="password" required [(ngModel)]="user.Password" #password="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" matTooltip="at least 6 characters, including at least 1 upper, 1 lower, 1 number, and 1 special character" validateEqual="confirm">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Confirm Password" type="password" name="confirm" required [(ngModel)]="user.confirmPassword" #confirm="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" validateEqual="password" reverse="false">
+    </mat-form-field> -->
 
-    <br>
-    
-    <div class="row">
-        <div class="col-sm-4"><label>LinkedIn URL:</label></div>
-        <div class="col-sm-7">
-            <input type="text" name="linkedin" [(ngModel)]="user.LinkedInAccountURL" #linkedin="ngModel" class="form-control">
-        </div>
-    </div>
-    
-    <br>
-
-    <div class="form-group row">
-        <label class="col-sm-4 col-form-label">Current Stack:</label>
-        <div class="col-sm-7">
-            <select id="select" class="form-control" name="stack" #stack="ngModel" [(ngModel)]="user.CurrentStack">
-                <option *ngFor = "let s of stacks; let idx = index" [ngValue]="idx">{{s}}</option>
-            </select>
-        </div>
-    </div>
-
-    <br>
-    
-    <input type="submit" value="Update" [disabled]="!editForm.form.valid" class="btn btn-primary">
+    <button class="submit-button" mat-raised-button color="accent" [disabled]="!editForm.valid">Update</button>
 </form>

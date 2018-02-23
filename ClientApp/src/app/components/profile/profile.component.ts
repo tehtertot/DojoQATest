@@ -10,7 +10,8 @@ import { UserFromServer } from '../../models/UserFromServer';
 
 @Component({
     selector: 'profile',
-    templateUrl: './profile.component.html'
+    templateUrl: './profile.component.html',
+    styleUrls: ['../home/home.component.css']
 })
 export class ProfileComponent {
     user: User = new User();
@@ -31,7 +32,8 @@ export class ProfileComponent {
     updateProfile() {
         this._userService.updateUser(this.user)
             .subscribe((userInfo) => {
-                this.setUser(userInfo);
+                // this.setUser(userInfo);
+                this._router.navigate(['/questions/all']);
             })
     }
 

@@ -45,6 +45,7 @@ namespace DojoQA.Controllers
                 user.LastName = userInfo.LastName;
                 user.CurrentStack = (CurrentStack) userInfo.CurrentStack;
                 user.LinkedInAccountURL = userInfo.LinkedInAccountURL;
+                // user.PasswordHash = userInfo.Password;
                 _context.SaveChanges();
             }
 
