@@ -33,7 +33,7 @@
         <mat-divider [vertical]="true"></mat-divider>
         <div class="question" fxFlex="75%">
             <mat-card-title>{{q.questionTitle}}</mat-card-title>
-            <p class="questionText">{{q.questionText | truncate : 100}}</p>
+            <p class="questionText">{{q.questionText | stripHtml | truncate : 100}}</p>
             <p>Tags: <mat-chip *ngIf="q.stack" color="primary" selected="true">{{q.stack}}</mat-chip><mat-chip selected="true" color="accent" *ngFor="let t of q.tagsString">{{t}}</mat-chip></p>
         </div>
         <div class="summary" fxFlex="20%">

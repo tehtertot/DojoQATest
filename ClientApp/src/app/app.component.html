@@ -1,7 +1,7 @@
 <!-- <app-nav-menu class="mat-elevation-z6"></app-nav-menu> -->
 
 <div class="example-container">
-    <mat-toolbar color="primary" class="example-toolbar">
+    <mat-toolbar color="primary" class="mat-elevation-z6">
       <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
       <h1>Dojo Answers</h1>
     </mat-toolbar>
@@ -9,7 +9,7 @@
   <mat-sidenav #sidenav mode="side" opened fixedInViewport="false" fixedTopGap="0" fixedBottomGap="0" class="mat-elevation-z4">
       <p><button mat-button [routerLink]="['/home/login']" *ngIf="!loggedIn">Login</button></p>
       <p><button mat-button [routerLink]="['/home/registration']" *ngIf="!loggedIn">Registration</button></p>
-      <p><button mat-button [routerLinkActive]="['link-active']" [routerLink]="['/questions/all']" *ngIf="loggedIn">Search</button></p>
+      <p><button mat-button [routerLink]="['/questions/all']" *ngIf="loggedIn">Search</button></p>
       <p><button mat-button [routerLink]="['/profile']" *ngIf="loggedIn">Profile</button></p>
       <p><button mat-button [routerLink]="['/leaderboard']"*ngIf="loggedIn">Rankings</button></p>
       <p><button mat-button [routerLink]="['/logout']" *ngIf="loggedIn">Log Out</button></p>

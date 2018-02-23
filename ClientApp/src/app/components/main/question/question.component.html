@@ -6,7 +6,7 @@
                 <span class="spacer"></span>
                 <button mat-raised-button class="votebutton" color="primary" [disabled]="!question.canVote" (click)="voteForQuestion(question.questionId)">+{{question.votes}}</button>
             </mat-toolbar-row>
-            <pre>{{question.questionText}}</pre>
+            <p [innerHTML]="question.questionText"></p>
             <p class="taginfo">Tags: <mat-chip *ngIf="question.stack" color="primary" selected="false">{{question.stack}}</mat-chip> <mat-chip selected="false" color="accent" *ngFor="let t of question.tagsString">{{t}}</mat-chip> </p>
         </div>
         <mat-divider [vertical]="true"></mat-divider>
@@ -19,7 +19,7 @@
 
     <mat-card *ngFor="let ans of question.answers">
         <mat-card-content fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
-            <p fxFlex="67%">{{ans.answerText}}</p>
+            <p [innerHTML]="ans.answerText" fxFlex="67%"></p>
             <mat-divider [vertical]="true"></mat-divider>
             <div fxFlex="33%" class="info">
                 <p>answered by: {{ans.answeredByName}}</p>

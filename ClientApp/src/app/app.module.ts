@@ -39,6 +39,7 @@ import { EqualValidator } from './validators/equal.directive';
 //pipes
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { SearchFilterPipe } from './pipes/searchfilter.pipe';
+import { StripHtmlPipe } from './pipes/stripHtml.pipe';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { SearchFilterPipe } from './pipes/searchfilter.pipe';
     AnswerEditDialog,
     EqualValidator,
     TruncatePipe,
-    SearchFilterPipe
+    SearchFilterPipe,
+    StripHtmlPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

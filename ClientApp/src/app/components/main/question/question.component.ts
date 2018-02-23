@@ -72,7 +72,7 @@ export class QuestionComponent implements OnInit {
 
     editQuestion(): void {
         let dialogRef = this.qDialog.open(QuestionEditDialog, {
-          width: '50%',
+          width: '70%',
           data: { title: this.question.questionTitle, content: this.question.questionText }
         });
     
@@ -96,7 +96,7 @@ export class QuestionComponent implements OnInit {
 
     editAnswer(answerId): void {
         let dialogRef = this.qDialog.open(AnswerEditDialog, {
-          width: '50%',
+          width: '70%',
           data: { questionId: this.question.questionId, content: this.question.answers.filter(a => a.answerId == answerId)[0].answerText }
         });
     
