@@ -7,7 +7,8 @@ import { LeaderboardService } from '../../services/leaderboard.service';
 
 @Component({
     selector: 'leaderboard',
-    templateUrl: './leaderboard.component.html'
+    templateUrl: './leaderboard.component.html',
+    styleUrls: ['./leaderboard.component.css']
 })
 export class LeaderboardComponent implements OnInit {
     private displayedColumns = ["name", "count"];

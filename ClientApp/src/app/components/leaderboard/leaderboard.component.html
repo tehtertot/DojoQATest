@@ -4,32 +4,38 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
-<div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="20px">
-    <mat-table fxFlex="50%" [dataSource]="questionLeadersData">
-        <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef> Student Name </mat-header-cell>
-            <mat-cell *matCellDef="let student"> {{student.name}} </mat-cell>
-        </ng-container>
-        <ng-container matColumnDef="count">
-            <mat-header-cell *matHeaderCellDef> Votes </mat-header-cell>
-            <mat-cell *matCellDef="let student"> {{student.count}} </mat-cell>
-        </ng-container>
-            
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-    <mat-divider [vertical]="true"></mat-divider>
-    <mat-table fxFlex="50%" [dataSource]="answerLeadersData">
+<div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="20px">
+    <div fxFlex="40%">
+        <h3>Askers</h3>
+        <mat-table [dataSource]="questionLeadersData">
             <ng-container matColumnDef="name">
                 <mat-header-cell *matHeaderCellDef> Student Name </mat-header-cell>
                 <mat-cell *matCellDef="let student"> {{student.name}} </mat-cell>
             </ng-container>
             <ng-container matColumnDef="count">
-                <mat-header-cell *matHeaderCellDef> Votes </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef matTooltip="questions + votes" matTooltipPosition="above"> Votes </mat-header-cell>
                 <mat-cell *matCellDef="let student"> {{student.count}} </mat-cell>
             </ng-container>
                 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div fxFlex="40%">
+        <h3>Answerers</h3>
+        <mat-table [dataSource]="answerLeadersData">
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef> Student Name </mat-header-cell>
+                <mat-cell *matCellDef="let student"> {{student.name}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="count">
+                <mat-header-cell *matHeaderCellDef matTooltip="answers + votes" matTooltipPosition="above"> Votes </mat-header-cell>
+                <mat-cell *matCellDef="let student"> {{student.count}} </mat-cell>
+            </ng-container>
+                
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
 </div>
