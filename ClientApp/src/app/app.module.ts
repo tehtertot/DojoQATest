@@ -68,6 +68,7 @@ import { SearchFilterPipe } from './pipes/searchfilter.pipe';
     RouterModule.forRoot([
       { path: '', redirectTo: 'home/login', pathMatch: 'full' },
       { path: 'home', component: HomeComponent, children: [
+          { path:'', redirectTo: 'login', pathMatch: 'full' },
           { path: 'login', component: LoginComponent },
           { path: 'registration', component: RegistrationComponent }
       ] },
@@ -79,13 +80,14 @@ import { SearchFilterPipe } from './pipes/searchfilter.pipe';
       ] },
       { path: 'leaderboard', component: LeaderboardComponent, canActivate: [AuthGuard] },
       { path: 'logout', component: LogoutComponent },
-      { path: '**', redirectTo: 'home' }
+      { path: '**', redirectTo: 'home/login' }
     ])
   ],
   providers: [
-    UserService,
     AuthGuard,
+    UserService,
     QuestionService,
+    LeaderboardService,
     AllQuestionsResolver,
     SingleQuestionResolver,
     {provide: HTTP_INTERCEPTORS,
