@@ -10,7 +10,6 @@ export class SingleQuestionResolver implements Resolve<QuestionFromServer> {
     constructor(private _questionService: QuestionService) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<any> | Promise<any> | any {
-        console.log("RESOLVING...");
         return this._questionService.getQuestion(route.params.id);
     }
 }

@@ -28,24 +28,27 @@
     </div>
 </div> -->
 
-<mat-card *ngFor="let q of allQuestions | searchfilter:searchStr:searchStack">
+<mat-card *ngFor="let q of allQuestions | searchfilter:searchStr:searchStack" [routerLink]="['/questions', q.questionId]">
     <mat-card-content class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
         <mat-divider [vertical]="true"></mat-divider>
         <div class="question" fxFlex="75%">
-            <mat-card-title><a>{{q.questionTitle}}</a></mat-card-title>
-            <mat-card-subtitle>Asked by {{q.askedByFirstName}} {{q.askedByLastName}} ({{q.createdAt | date: 'dd MMM yyyy HH:mm a'}})</mat-card-subtitle>
-            <p><a [routerLink]="['/questions', q.questionId]">{{q.questionText | truncate : 125}}</a></p>
+            <mat-card-title>{{q.questionTitle}}</mat-card-title>
+            <p class="questionText">{{q.questionText | truncate : 100}}</p>
             <p>Tags: <mat-chip *ngIf="q.stack" color="primary" selected="true">{{q.stack}}</mat-chip><mat-chip selected="true" color="accent" *ngFor="let t of q.tagsString">{{t}}</mat-chip></p>
         </div>
-        <div class="summary" fxFlex="15%">
-            <div fxFlex="50%">
-                <p>Answers</p>
-                <p>{{q.answers.length}}</p>
+        <div class="summary" fxFlex="20%">
+            <div class="row">
+                <div fxFlex="50%">
+                    <p>Answers</p>
+                    <p>{{q.answers.length}}</p>
+                </div>
+                <div fxFlex="50%">
+                    <p>Votes</p>
+                    <p>{{q.votes}}</p>
+                </div>
             </div>
-            <div fxFlex="50%">
-                <p>Votes</p>
-                <p>{{q.votes}}</p>
-            </div>
+            <p class="smallinfo">Asked by {{q.askedByFirstName}} {{q.askedByLastName}}</p>
+            <p class="smallinfo">{{q.createdAt | date: 'dd MMM yyyy HH:mm a'}}</p>
         </div>
     </mat-card-content>  
 </mat-card>

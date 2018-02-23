@@ -1,7 +1,11 @@
 <div class="container">
     <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
         <div fxFlex="67%">
-            <h3>{{question.questionTitle}}</h3>
+            <mat-toolbar-row>
+                <h3>{{question.questionTitle}}</h3>
+                <span class="spacer"></span>
+                <button mat-raised-button class="votebutton" color="primary" [disabled]="!question.canVote" (click)="voteForQuestion(question.questionId)">+{{question.votes}}</button>
+            </mat-toolbar-row>
             <pre>{{question.questionText}}</pre>
             <p class="taginfo">Tags: <mat-chip *ngIf="question.stack" color="primary" selected="false">{{question.stack}}</mat-chip> <mat-chip selected="false" color="accent" *ngFor="let t of question.tagsString">{{t}}</mat-chip> </p>
         </div>
@@ -10,7 +14,6 @@
             <p>asked by: {{question.askedByFirstName}} {{question.askedByLastName}}</p>
             <p>asked on: {{question.createdAt | date: 'dd MMM yy h:mm a'}}</p>
             <p><button mat-button color="warn" (click)="editQuestion()" *ngIf="question.askedById==userId">Edit</button></p>
-            <p><button mat-fab mat-small class="votebutton" color="primary" [disabled]="!question.canVote" (click)="voteForQuestion(question.questionId)">+{{question.votes}}</button></p>
         </div>
     </div>
 
@@ -22,7 +25,7 @@
                 <p>answered by: {{ans.answeredByName}}</p>
                 <p>answered on: {{ans.answeredDate | date: 'dd MMM yy h:mm a'}}</p>
                 <p><button mat-button color="warn" (click)="editAnswer(ans.answerId)" *ngIf="ans.answeredById==userId">Edit</button></p>
-                <button mat-fab color="primary" (click)="voteForAnswer(a.answerId)">+{{a.votes}}</button>
+                <button mat-raised-button color="primary" (click)="voteForAnswer(ans.answerId)">+{{ans.votes}}</button>
             </div>
         </mat-card-content>
     </mat-card>

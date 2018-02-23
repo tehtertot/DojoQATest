@@ -27,16 +27,15 @@ export class QuestionComponent implements OnInit {
 
     ngOnInit() {
         this.question = this._route.snapshot.data.question;
-        console.log(this.question);
         this.userId = this._userService.getUserId();
     }
 
     submitAnswer() {
         this._questionService.addAnswer(this.newAnswer, this.question.questionId)
             .subscribe((updatedQuestion) => {
-                // this.question = updatedQuestion;
-                // this.newAnswer = new Answer();
-                this._router.navigate(['/questions/all']);
+                this.question = updatedQuestion;
+                this.newAnswer = new Answer();
+                // this._router.navigate(['/questions/all']);
             });
     }
 
@@ -65,6 +64,7 @@ export class QuestionComponent implements OnInit {
                     thisAnswer.canVote = false;
                     if (res) {
                         thisAnswer.votes++;
+                        // thisAnswer.canVote = false;
                     }
                 });
         });

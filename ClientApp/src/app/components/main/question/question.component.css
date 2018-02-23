@@ -30,3 +30,17 @@ mat-card {
     width: 85%;
     margin-top: 20px;
 }
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.votebutton {
+    padding: 0;
+    margin: 0;
+    width: 25px;
+}
+
+mat-toolbar-row {
+    align-items: flex-start;
+}
