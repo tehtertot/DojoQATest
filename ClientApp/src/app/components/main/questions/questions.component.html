@@ -1,4 +1,3 @@
-<div class="spacefromheader"></div>
 <!-- search bar -->
 <div class="fullwidth">
     <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="0">
@@ -29,14 +28,14 @@
     </div>
 </div> -->
 
-<mat-card *ngFor="let q of allQuestions | searchfilter:searchStr:searchStack" >
+<mat-card *ngFor="let q of allQuestions | searchfilter:searchStr:searchStack">
     <mat-card-content class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
         <mat-divider [vertical]="true"></mat-divider>
         <div class="question" fxFlex="75%">
-            <mat-card-title><a (click)="answerQuestion(q.questionId)">{{q.questionTitle}}</a></mat-card-title>
+            <mat-card-title><a>{{q.questionTitle}}</a></mat-card-title>
             <mat-card-subtitle>Asked by {{q.askedByFirstName}} {{q.askedByLastName}} ({{q.createdAt | date: 'dd MMM yyyy HH:mm a'}})</mat-card-subtitle>
-            <p>{{q.questionText | truncate : 125}}</p>
-            <p>Tags: <mat-chip *ngIf="q.stack" color="primary" selected="true">{{q.stack}}</mat-chip> <mat-chip selected="true" color="accent" *ngFor="let t of q.tagsString">{{t}}</mat-chip></p>
+            <p><a [routerLink]="['/questions', q.questionId]">{{q.questionText | truncate : 125}}</a></p>
+            <p>Tags: <mat-chip *ngIf="q.stack" color="primary" selected="true">{{q.stack}}</mat-chip><mat-chip selected="true" color="accent" *ngFor="let t of q.tagsString">{{t}}</mat-chip></p>
         </div>
         <div class="summary" fxFlex="15%">
             <div fxFlex="50%">

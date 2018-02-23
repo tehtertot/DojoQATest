@@ -13,6 +13,7 @@
 mat-chip {
   border-radius: 5px;
   padding: 4px;
+  margin-right: 8px;
 }
 
 .spacefromheader {

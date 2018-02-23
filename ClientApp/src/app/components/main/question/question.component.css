@@ -1,0 +1,32 @@
+.container {
+    padding: 5%;
+}
+
+mat-form-field {
+    width: 100%;
+    margin: 20px auto;
+}
+
+.info {
+    font-size: 80%;
+    text-align: center;
+    vertical-align: center;
+}
+
+.taginfo {
+    font-size: 80%;
+    margin-top: 30px;
+}
+
+.mat-fab.mat-small {
+    min-width: 1%;
+    vertical-align: top;
+    width: 20px;
+    height: 20px;
+}
+
+mat-card {
+    margin-left: 5%;
+    width: 85%;
+    margin-top: 20px;
+}

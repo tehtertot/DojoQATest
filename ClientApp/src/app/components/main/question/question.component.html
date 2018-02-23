@@ -1,59 +1,39 @@
-<div id="maincontent">
-        <div class="row question">
-            <h1 class="col-sm-1 letter">Q</h1>
-            <div class="col-sm-10">
-                <h3>{{question.questionTitle}}</h3>
-                <p>{{question.questionText}}</p>
-                <p><a (click)="editQuestion()" *ngIf="question.askedById==userId">Edit</a></p>
-                    <p>
-                        <label class="tag">TAGS: </label>
-                        <label class="tag tag-box" *ngFor="let t of question.tags">{{t.name}}</label>
-                    </p>
-                    <div class="row">
-                        <button [disabled]="!question.canVote" class="btn btn-primary glyphicon glyphicon-thumbs-up" (click)="voteForQuestion(question.questionId)"> {{question.votes}}</button>
-                        <p class="user-info">asked by {{question.askedByFirstName}} {{question.askedByLastName}} ({{question.createdAt | date: 'dd MMM yyyy HH:mm a'}})</p>
-                    </div>
+<div class="container">
+    <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+        <div fxFlex="67%">
+            <h3>{{question.questionTitle}}</h3>
+            <pre>{{question.questionText}}</pre>
+            <p class="taginfo">Tags: <mat-chip *ngIf="question.stack" color="primary" selected="false">{{question.stack}}</mat-chip> <mat-chip selected="false" color="accent" *ngFor="let t of question.tagsString">{{t}}</mat-chip> </p>
+        </div>
+        <mat-divider [vertical]="true"></mat-divider>
+        <div fxFlex="33%" class="info">
+            <p>asked by: {{question.askedByFirstName}} {{question.askedByLastName}}</p>
+            <p>asked on: {{question.createdAt | date: 'dd MMM yy h:mm a'}}</p>
+            <p><button mat-button color="warn" (click)="editQuestion()" *ngIf="question.askedById==userId">Edit</button></p>
+            <p><button mat-fab mat-small class="votebutton" color="primary" [disabled]="!question.canVote" (click)="voteForQuestion(question.questionId)">+{{question.votes}}</button></p>
+        </div>
+    </div>
+
+    <mat-card *ngFor="let ans of question.answers">
+        <mat-card-content fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+            <p fxFlex="67%">{{ans.answerText}}</p>
+            <mat-divider [vertical]="true"></mat-divider>
+            <div fxFlex="33%" class="info">
+                <p>answered by: {{ans.answeredByName}}</p>
+                <p>answered on: {{ans.answeredDate | date: 'dd MMM yy h:mm a'}}</p>
+                <p><button mat-button color="warn" (click)="editAnswer(ans.answerId)" *ngIf="ans.answeredById==userId">Edit</button></p>
+                <button mat-fab color="primary" (click)="voteForAnswer(a.answerId)">+{{a.votes}}</button>
             </div>
-        </div>
-        
-        <div class="row">
-        <h1 class="col-sm-1 letter">A</h1>
-        <div class="col-sm-11">
-            <div class="row" *ngFor="let a of question.answers">
-                <p>{{a.answerText}}</p>
-                <p><a (click)="editAnswer(a.answerId)" *ngIf="a.answeredById==userId">Edit</a></p>
-                <p class="user-info"><a href="/users/{{a.answeredById}}">{{a.answeredByName}}</a> ({{a.answeredDate | date: 'dd MMM yyyy HH:mm a'}})</p>
-                <button class="btn btn-success glyphicon glyphicon-thumbs-up" (click)="voteForAnswer(a.answerId)"> {{a.votes}}</button>
-            </div>
-        </div>
-        </div>
-        <hr>
-        
-        <h3>Add Your Answer</h3>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
         <form (submit)="submitAnswer()" #answerForm="ngForm">
-            <textarea name="content" required [(ngModel)]="newAnswer.answerText" #content="ngModel" class="form-control">
-            </textarea>
-            <br>
-            <div class="col-sm-12">
-                <input type="submit" value="Answer" [disabled]="!answerForm.form.valid" class="btn btn-success">
-            </div>
+            <mat-form-field hintLabel="at least 20 characters">
+                <textarea matInput name="content" required [(ngModel)]="newAnswer.answerText" #content="ngModel" minlength="20" placeholder="Add Your Answer"></textarea>
+                <mat-hint align="end">{{content.value?.length || 0}} characters</mat-hint>
+            </mat-form-field>
+            <button [disabled]="!answerForm.valid" mat-raised-button color="primary">Answer</button>      
         </form>
-        
-        </div>
-        
-        <div id="editQModal" class="modal">
-            <form (submit)="updateQuestion()" #editQForm="ngForm">
-                <input name="title" required [(ngModel)]="questionUpdate.QuestionTitle" #title="ngModel" class="form-control">
-                <textarea name="content" required [(ngModel)]="questionUpdate.QuestionText" #content="ngModel" class="form-control"></textarea>
-                <button type="submit" class="btn btn-primary">Update</button>
-                <button (click)="cancelQEdit()" type="button" class="btn btn-default">Cancel</button>
-            </form>
-        </div>
-        
-        <div id="editAModal" class="modal">
-            <form (submit)="updateAnswer()" #editAForm="ngForm">
-                <textarea name="content" required [(ngModel)]="answerUpdate.answerText" #content="ngModel" class="form-control"></textarea>
-                <button type="submit" class="btn btn-primary">Update</button>
-                <button (click)="cancelAEdit()" type="button" class="btn btn-default">Cancel</button>
-            </form>
-        </div>
+    </mat-card>
+</div>

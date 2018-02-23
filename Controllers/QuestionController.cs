@@ -107,13 +107,13 @@ namespace DojoQA.Controllers
 
         // **************************** ANSWERS ********************************* //
         [HttpPost("answer/{id:int}")]
-        public QuestionWithAnswersViewModel addAnswer([FromBody] AnswerView answerView, int id) {
+        public QuestionWithAnswersViewModel addAnswer([FromBody] AnswerView answer, int id) {
             string userId = _caller.Claims.Single(c => c.Type == "id").Value;
             ApplicationUser user = _context.Users.SingleOrDefault(u => u.Id == userId);
                 
             Answer a = new Answer();
             a.AnsweredBy = user;
-            a.AnswerText = answerView.AnswerText;
+            a.AnswerText = answer.AnswerText;
             a.Question = _context.Questions.Single(q => q.QuestionId == id);
             _context.Answers.Add(a);
             _context.SaveChanges();

@@ -19,6 +19,7 @@ import { MainComponent } from './components/main/main.component';
   import { QuestionsComponent } from './components/main/questions/questions.component';
   import { AskComponent } from './components/main/ask/ask.component';
   import { QuestionComponent } from './components/main/question/question.component';
+    import { QuestionEditDialog } from './components/main/question/question.component';
 
 //services
 import { AllQuestionsResolver } from './services/allquestions.resolve.service';
@@ -48,6 +49,7 @@ import { SearchFilterPipe } from './pipes/searchfilter.pipe';
     QuestionsComponent,
     AskComponent,
     QuestionComponent,
+    QuestionEditDialog,
     EqualValidator,
     TruncatePipe,
     SearchFilterPipe
@@ -82,6 +84,9 @@ import { SearchFilterPipe } from './pipes/searchfilter.pipe';
     {provide: HTTP_INTERCEPTORS,
      useClass: UserAuthInterceptor,
      multi:true}
+  ],
+  entryComponents: [
+    QuestionEditDialog
   ],
   bootstrap: [AppComponent]
 })

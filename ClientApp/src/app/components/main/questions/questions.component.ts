@@ -32,10 +32,6 @@ export class QuestionsComponent {
                 this.allTags = tags;
             })
     }
-            
-    public answerQuestion(id: number) {
-        this._router.navigate(['/search/questions', id]);
-    }
 
     public addFilterTag(t: string) {
         //not yet in list -- add
