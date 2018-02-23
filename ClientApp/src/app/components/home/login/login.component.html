@@ -1,0 +1,11 @@
+<form (submit)="userlogin()" #loginForm="ngForm" class="home-form"> 
+    <mat-form-field>
+        <input matInput placeholder="Email Address" type="email" id="email" name="email" required [(ngModel)]="login.Email" #email="ngModel" autocomplete="off">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Password" type="password" name="lpassword" required [(ngModel)]="login.Password" #lpassword="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" matTooltip="at least 6 characters, including at least 1 upper, 1 lower, 1 number, and 1 special character">
+    </mat-form-field>
+    
+    <button class="submit-button" mat-raised-button color="primary" [disabled]="!loginForm.valid">Log In</button>
+    <span>{{loginerrors}}</span>
+</form>

@@ -1,0 +1,25 @@
+<form (submit)="register()" #regForm="ngForm" class="home-form"> 
+    <mat-form-field>
+        <input matInput placeholder="First Name" type="text" id="firstname" name="firstname" required [(ngModel)]="user.FirstName" #firstname="ngModel" autocomplete="off" minlength="2">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Last Name" type="text" id="lastname" name="lastname" required [(ngModel)]="user.LastName" #lastname="ngModel" autocomplete="off" minlength="2">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Email Address" type="email" id="email" name="email" required [(ngModel)]="user.Email" #email="ngModel" autocomplete="off" minlength="2">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select [(value)]="user.CurrentStack" required placeholder="Current Stack">
+            <mat-option *ngFor="let s of stacks; let idx=index" [value]="idx">{{s}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Password" type="password" name="password" required [(ngModel)]="user.Password" #password="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" matTooltip="at least 6 characters, including at least 1 upper, 1 lower, 1 number, and 1 special character" validateEqual="confirm">
+        <!-- <mat-error *ngIf="password.invalid">Passwords do not match</mat-error> -->
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Confirm Password" type="password" name="confirm" required [(ngModel)]="user.confirmPassword" #confirm="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" validateEqual="password" reverse="false">
+    </mat-form-field>
+    
+    <button class="submit-button" mat-raised-button color="primary" [disabled]="!regForm.valid">Register</button>
+</form>

@@ -6,7 +6,7 @@ import { UserService } from '../../../services/user.service';
 
 @Component({
     selector: 'logout',
-    template: '../home.component.html'
+    template: '<p>logging out...</p>'
 })
 
 export class LogoutComponent {
@@ -15,7 +15,7 @@ export class LogoutComponent {
 
     ngOnInit() {
         this._userService.setLoggedInStatus(false);
-        this._router.navigate(['/home']);
+        this._router.navigate(['/home/login']);
     }
     
 }
