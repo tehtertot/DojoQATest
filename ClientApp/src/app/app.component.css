@@ -9,24 +9,44 @@
   font-family: 'Roboto', sans-serif;
 }
 
-#dojo {
-  font-family: 'Fredericka the Great', cursive;
-}
-
-#sidenav {
-  padding-left: 3%;
-  padding-right: 3%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: lightgray;
-}
-
-#sidenav > p > button {
-  text-align: center;
-  margin: 0 auto;
-}
-
 mat-icon {
   font-family: 'Material Icons';
 }
+
+#page-container {
+  width: 100%;
+}
+
+  #header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+    #dojo {
+      font-family: 'Fredericka the Great', cursive;
+    }
+    .fill-width {
+      flex: 1 1 auto;
+    }
+
+  mat-sidenav-container {
+    width: 100%;
+    /* position: absolute; */
+    top: 60px;
+    left: 0;
+    z-index: 0;
+  }
+    #sidenav {
+      position: fixed;
+      z-index: 1;
+      padding-left: 3%;
+      padding-right: 3%;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      justify-content: flex-start;
+      align-content: stretch;
+      height: 100%;
+    }

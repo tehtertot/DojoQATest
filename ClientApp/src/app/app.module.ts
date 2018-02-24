@@ -11,6 +11,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 //components
 import { AppComponent } from './app.component';
   import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
+import { FeedbackComponent } from './components/feedback/feedback.component';
 import { HomeComponent } from './components/home/home.component';
   import { LoginComponent } from './components/home/login/login.component';
   import { RegistrationComponent } from './components/home/registration/registration.component';
@@ -30,6 +31,7 @@ import { SingleQuestionResolver } from './services/question.resolve.service';
 import { UserService } from './services/user.service';
 import { QuestionService } from './services/question.service';
 import { LeaderboardService } from './services/leaderboard.service';
+import { FeedbackService } from './services/feedback.service';
 import { AuthGuard } from './services/auth.guard';
 import { UserAuthInterceptor } from './services/userauth.interceptor';
 
@@ -45,6 +47,7 @@ import { StripHtmlPipe } from './pipes/stripHtml.pipe';
   declarations: [
     AppComponent,
     NavMenuComponent,
+    FeedbackComponent,
     HomeComponent,
     LoginComponent,
     RegistrationComponent,
@@ -71,6 +74,7 @@ import { StripHtmlPipe } from './pipes/stripHtml.pipe';
     FlexLayoutModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'home/login', pathMatch: 'full' },
+      { path: 'feedback', component: FeedbackComponent },
       { path: 'home', component: HomeComponent, children: [
           { path:'', redirectTo: 'login', pathMatch: 'full' },
           { path: 'login', component: LoginComponent },
@@ -92,6 +96,7 @@ import { StripHtmlPipe } from './pipes/stripHtml.pipe';
     UserService,
     QuestionService,
     LeaderboardService,
+    FeedbackService,
     AllQuestionsResolver,
     SingleQuestionResolver,
     {provide: HTTP_INTERCEPTORS,

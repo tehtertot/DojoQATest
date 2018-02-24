@@ -1,0 +1,12 @@
+<form (submit)="sendFeedback()" #feedbackForm="ngForm" class="home-form"> 
+    <mat-form-field>
+        <mat-select [(ngModel)]="feedback.category" required placeholder="Category" required name="cat">
+            <mat-option *ngFor="let c of categories" [value]="c">{{c}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <textarea matInput placeholder="Detailed Feedback" required [(ngModel)]="feedback.description" name="description"></textarea>
+    </mat-form-field>
+    
+    <button class="submit-button" mat-raised-button color="primary" [disabled]="!feedbackForm.valid">Submit</button>
+</form>

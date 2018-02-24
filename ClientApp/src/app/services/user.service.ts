@@ -41,7 +41,7 @@ export class UserService {
   }
 
   getUserId() : string | null {
-    return this.userId;
+    return this.userId ? this.userId : null;
   }
 
   getStacks(): string[] {

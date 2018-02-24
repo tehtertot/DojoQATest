@@ -14,10 +14,7 @@ export class LoginComponent {
   public login: User = new User();
   public loginerrors: string = null;
 
-  constructor(private _userService: UserService, private _router: Router) { 
-    this.login.Email = "ncaldwell@codingdojo.com";
-    this.login.Password = "Tiavgp2r!";
-  }
+  constructor(private _userService: UserService, private _router: Router) { }
 
   userlogin() {
     this._userService.loginUser(this.login) 
