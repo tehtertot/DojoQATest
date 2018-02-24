@@ -16,17 +16,17 @@ import { forEach } from '@angular/router/src/utils/collection';
     styleUrls: ['./questions.component.css']
 })
 export class QuestionsComponent {
-    allQuestions: Array<QuestionFromServer>;
+    public allQuestions: Array<QuestionFromServer>;
 
     //for filtering
-    private searchStr: string = "";
+    public searchStr: string = "";
     //by stack
-    private allStacks;
-    private searchStack: string;
+    public allStacks;
+    public searchStack: string;
     //by tags
-    private allTags: Array<CategoryTag>;
-    private filteredTagList: CategoryTag = new CategoryTag();
-    private searchTags = new Array<SimpleTag>();
+    public allTags: Array<CategoryTag>;
+    public filteredTagList: CategoryTag = new CategoryTag();
+    public searchTags = new Array<SimpleTag>();
 
     constructor(private _questionService: QuestionService, private _userService: UserService, private _router: Router, private _route: ActivatedRoute) { 
         this.allStacks = this._userService.getStacks();

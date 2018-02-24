@@ -19,9 +19,9 @@ import { Answer } from '../../models/Answer';
 export class LeaderboardComponent implements OnInit {
     private filteredQuestions: Array<QuestionFromServer> = [];
     private filteredAnswers: Array<Answer> = [];
-    private displayedColumns = ["name", "count"];
-    private questionLeadersData;
-    private answerLeadersData;
+    public displayedColumns = ["name", "count"];
+    public questionLeadersData;
+    public answerLeadersData;
 
     //potential filters
     private stackFilter: string;

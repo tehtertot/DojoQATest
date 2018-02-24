@@ -13,10 +13,7 @@ import { FeedbackService } from '../../services/feedback.service';
 export class FeedbackComponent {
     public loginerrors: string = null;
     public categories = ['Search Functionality', 'Q/A Functionality', 'User Management', 'Ranking', 'General Usability', 'Other'];
-    private feedback: Feedback = new Feedback();
-    private category: string;
-    private description: string;
-    private user_id: string | null = null;
+    public feedback: Feedback = new Feedback();
 
     constructor(private _userService: UserService, private _feedbackService: FeedbackService, private _router: Router) { }
 

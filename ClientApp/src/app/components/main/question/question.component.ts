@@ -17,11 +17,11 @@ import { UserService } from '../../../services/user.service';
     styleUrls: ['question.component.css']
 })
 export class QuestionComponent implements OnInit {   
-    private userId: string | null = null;
-    private question: QuestionFromServer = new QuestionFromServer();
-    private newAnswer : Answer = new Answer();
-    private questionUpdate: Question = new Question();
-    private answerUpdate: Answer = new Answer();
+    public userId: string | null = null;
+    public question: QuestionFromServer = new QuestionFromServer();
+    public newAnswer : Answer = new Answer();
+    public questionUpdate: Question = new Question();
+    public answerUpdate: Answer = new Answer();
 
     constructor(private _router: Router, private _questionService: QuestionService, private _route: ActivatedRoute, private _zone: NgZone, private _userService: UserService, public qDialog: MatDialog) { }
 
