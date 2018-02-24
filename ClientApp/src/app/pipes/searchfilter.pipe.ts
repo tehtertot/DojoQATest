@@ -8,11 +8,10 @@ import { SimpleTag } from '../models/SimpleTag';
     name: 'searchfilter'
 })
 export class SearchFilterPipe implements PipeTransform {
-    transform(value: Array<QuestionFromServer>, searchStr: string, searchStack: string): Array<QuestionFromServer> {
+    transform(value: Array<QuestionFromServer>, searchStr: string, searchStack: string, searchTags: Array<SimpleTag>): Array<QuestionFromServer> {
         if (!value || (!searchStr && !searchStack)) { return value; }
         var options = { keys: ['questionText', 'questionTitle'] };
 
-        console.log(searchStack);
         //filter by stack if selected
         if (searchStack != null && searchStack != "") {
             console.log(searchStack);
@@ -23,6 +22,15 @@ export class SearchFilterPipe implements PipeTransform {
             }
         }
         
+        //**** !!!!!!!!!!!!! FILTER IS NOT BEING TRIGGERED ON CHANGES TO SEARCHTAGS *****/
+        //filter for questions that have any of the selected tags
+        // let tagsToInclude = this.getSelectedTags(searchTags);
+        // console.log(searchTags);
+        // console.log(tagsToInclude);
+        // if (tagsToInclude.length > 0) {
+        //     value = value.filter(q => q.containsAnyTags(tagsToInclude));
+        // }
+
         //run fuse with searchStr
         var fuse = new Fuse(value, options);
         return fuse.search(searchStr);
@@ -64,11 +72,13 @@ export class SearchFilterPipe implements PipeTransform {
         // return filteredQuestions;
     }
 
-    private getFields(input: SimpleTag[]) {
-        let output: string[] = [];
-        for (let i = 0; i < input.length; i++) {
-            output.push(input[i].tagName);
+    private getSelectedTags(input: SimpleTag[]) {
+        let selectedTags = [];
+        for (let t of input) {
+            if (t.selected) {
+                selectedTags.push(t.tagName);
+            }
         }
-        return output;
+        return selectedTags;
     }
 }

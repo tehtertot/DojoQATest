@@ -5,10 +5,28 @@
   }
 }
 
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+#dojo {
+  font-family: 'Fredericka the Great', cursive;
+}
+
 #sidenav {
-  width: 200px;
+  padding-left: 3%;
+  padding-right: 3%;
   display: flex;
   align-items: center;
   justify-content: center;
   background: lightgray;
+}
+
+#sidenav > p > button {
+  text-align: center;
+  margin: 0 auto;
+}
+
+mat-icon {
+  font-family: 'Material Icons';
 }

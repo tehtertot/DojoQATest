@@ -53,7 +53,8 @@ namespace DojoQA.Controllers
             };
             IdentityResult result = await _userManager.CreateAsync(newUser, user.Password);
             if (result.Succeeded) {
-                return new OkObjectResult(new JsonResult(new { success = true, user = newUser}));
+                ClaimsIdentity identity = await GetClaimsIdentity(user.Email, user.Password);
+                return new OkObjectResult(GetJwtToken(identity, user.Email));
             }
             ModelState.AddModelError("registration", "email is already registered");
             return BadRequest(ModelState);
@@ -74,8 +75,7 @@ namespace DojoQA.Controllers
                 return BadRequest(ModelState);
             }
 
-            var jwt = await Tokens.GenerateJwt(identity, _jwtFactory, login.Email, _jwtOptions, new JsonSerializerSettings { Formatting = Formatting.Indented });
-            return new OkObjectResult(jwt);
+            return new OkObjectResult(GetJwtToken(identity, login.Email));
         }
 
         private async Task<ClaimsIdentity> GetClaimsIdentity(string email, string password) {
@@ -97,6 +97,10 @@ namespace DojoQA.Controllers
 
             //any other errors (i.e. password is incorrect)
             return await Task.FromResult<ClaimsIdentity>(null);
+        }
+
+        private async Task<string> GetJwtToken(ClaimsIdentity identity, string email) {
+            return await Tokens.GenerateJwt(identity, _jwtFactory, email, _jwtOptions, new JsonSerializerSettings { Formatting = Formatting.Indented });
         }
 
         public IActionResult Error()

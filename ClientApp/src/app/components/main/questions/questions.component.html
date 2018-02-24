@@ -3,32 +3,21 @@
     <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="0">
         <input [(ngModel)]="searchStr" class="mat-elevation-z2 searchbar" fxFlex="60%" placeholder="search...">
         <div fxFlex="5%"></div>
-        <select class="mat-elevation-z2 searchbar" fxFlex="35%" [(ngModel)]="searchStack">
+        <select class="mat-elevation-z2 searchbar" fxFlex="35%" [(ngModel)]="searchStack" (change)="updateTagsToShow()">
             <option value="">any</option>
             <option *ngFor="let s of allStacks">{{s}}</option>
         </select>
     </div>
 </div>
-<!-- advanced filters: select tags -->
-<!-- <div class="panel-group" id="accordion">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a href="#collapse1" data-toggle="collapse" data-parent="#accordion">Filter by Tags</a>
-            </h4>
-        </div>
-        <div id="collapse1" class="panel-collapse collapse">
-            <div class="panel-body">
-                <div class="col-sm-2" *ngFor="let c of allTags">
-                    <p><i>{{c.categoryName}}</i></p>
-                    <p *ngFor="let t of c.tags"><input type="checkbox" (click)="addFilterTag($event.target.value)" value="{{t.tagName}}"> {{t.tagName}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
+<!-- <div class="fullwidth">
+    <p class="taginfo" *ngIf="filteredTagList.tags.length > 0">Include Tags: 
+        <span *ngFor="let t of filteredTagList.tags; let i = index">
+            <input type="checkbox" class="checkbox" [(ngModel)]="searchTags[i].selected">{{t.tagName}}
+        </span>
+    </p>
 </div> -->
 
-<mat-card *ngFor="let q of allQuestions | searchfilter:searchStr:searchStack" [routerLink]="['/questions', q.questionId]">
+<mat-card *ngFor="let q of allQuestions | searchfilter:searchStr:searchStack:searchTags" [routerLink]="['/questions', q.questionId]">
     <mat-card-content class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
         <mat-divider [vertical]="true"></mat-divider>
         <div class="question" fxFlex="75%">
@@ -48,7 +37,7 @@
                 </div>
             </div>
             <p class="smallinfo">Asked by {{q.askedByFirstName}} {{q.askedByLastName}}</p>
-            <p class="smallinfo">{{q.createdAt | date: 'dd MMM yyyy HH:mm a'}}</p>
+            <p class="smallinfo">{{q.createdAt | date: 'dd MMM yyyy h:mm a'}}</p>
         </div>
     </mat-card-content>  
 </mat-card>

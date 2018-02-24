@@ -19,6 +19,7 @@ namespace DojoQA.Data
         public DbSet<StackCategory> StackCategories { get; set; }
         public DbSet<QuestionVote> QuestionVotes { get; set; }
         public DbSet<AnswerVote> AnswerVotes { get; set; }
+        public DbSet<StackMonth> StackMonths { get; set; }
 
         public override int SaveChanges()
         {

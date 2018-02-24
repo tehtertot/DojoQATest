@@ -38,6 +38,10 @@ namespace DojoQA.Controllers
             }
             return top.OrderByDescending(l => l.count).Where(l => l.count > 0).Take(10).ToList();
         }
+
+        // private List<Leader> GetQuestionLeaders() {
+        //     IEnumerable<Question> questionsByUser = _context.Questions.Where()
+        // }
         
     }
 }

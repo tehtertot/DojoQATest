@@ -13,7 +13,8 @@ import { MatMenuModule,
         MatSidenavModule,
         MatDividerModule,
         MatChipsModule,
-        MatDialogModule } from '@angular/material';
+        MatDialogModule,
+        MatCheckboxModule } from '@angular/material';
 
 @NgModule({
     imports: [
@@ -30,7 +31,8 @@ import { MatMenuModule,
         MatSidenavModule,
         MatDividerModule,
         MatChipsModule,
-        MatDialogModule
+        MatDialogModule,
+        MatCheckboxModule
     ],
     exports: [
         MatMenuModule,
@@ -46,7 +48,8 @@ import { MatMenuModule,
         MatSidenavModule,
         MatDividerModule,
         MatChipsModule,
-        MatDialogModule
+        MatDialogModule,
+        MatCheckboxModule
     ]
 })
 

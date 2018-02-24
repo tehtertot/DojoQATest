@@ -33,9 +33,9 @@ export class QuestionComponent implements OnInit {
     submitAnswer() {
         this._questionService.addAnswer(this.newAnswer, this.question.questionId)
             .subscribe((updatedQuestion) => {
-                this.question = updatedQuestion;
-                this.newAnswer = new Answer();
-                // this._router.navigate(['/questions/all']);
+                // this.question = updatedQuestion;
+                // this.newAnswer = new Answer();
+                this._router.navigate(['/questions/all']);
             });
     }
 

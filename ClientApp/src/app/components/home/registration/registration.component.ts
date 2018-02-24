@@ -28,7 +28,7 @@ export class RegistrationComponent {
 
   successfulRedirect(token: string) {
       localStorage.setItem('auth_token', token);
-      this._userService.setLoggedInStatus(true);
-      this._router.navigate(['/questions/all']);
+      // this._userService.setLoggedInStatus(true);
+      this._router.navigate(['/home/login']);
   }
 }

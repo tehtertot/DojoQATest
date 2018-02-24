@@ -44,3 +44,12 @@ footer {
 mat-card-title {
     margin-top: 15px;
 }
+
+.checkbox {
+    font-size: 80%;
+    margin-right: 10px;
+}
+
+.taginfo {
+    font-size: 80%;
+}

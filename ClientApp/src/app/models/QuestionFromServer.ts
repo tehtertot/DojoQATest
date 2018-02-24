@@ -13,4 +13,14 @@ export class QuestionFromServer {
     answers: Answer[] = [];
     tagsString: string[] = [];
     stack: string;
+    
+    containsAnyTags(tagsList) {
+        let contains = false;
+        tagsList.forEach(tag => {
+            if (this.tagsString.includes(tag)) {
+                return true;
+            }
+        });
+        return contains;
+    }
 }

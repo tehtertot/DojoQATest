@@ -31,7 +31,7 @@
     </mat-card>
 
     <mat-card>
-        <form (submit)="submitAnswer()" #answerForm="ngForm">
+        <form (submit)="submitAnswer(); answerForm.reset();" #answerForm="ngForm">
             <mat-form-field hintLabel="at least 20 characters">
                 <textarea matInput name="content" required [(ngModel)]="newAnswer.answerText" #content="ngModel" minlength="20" placeholder="Add Your Answer"></textarea>
                 <mat-hint align="end">{{content.value?.length || 0}} characters</mat-hint>

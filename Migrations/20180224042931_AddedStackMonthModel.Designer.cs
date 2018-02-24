@@ -12,9 +12,10 @@ using System;
 namespace DojoQA.Migrations
 {
     [DbContext(typeof(QAContext))]
-    partial class QAContextModelSnapshot : ModelSnapshot
+    [Migration("20180224042931_AddedStackMonthModel")]
+    partial class AddedStackMonthModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -232,8 +233,6 @@ namespace DojoQA.Migrations
                     b.Property<DateTime>("CreatedAt");
 
                     b.Property<DateTime>("EndDate");
-
-                    b.Property<string>("MonthReference");
 
                     b.Property<DateTime>("StartDate");
 

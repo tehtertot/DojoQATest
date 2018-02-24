@@ -7,6 +7,8 @@ import { CategoryTag } from '../../../models/CategoryTag';
 import { QuestionService } from '../../../services/question.service';
 import { UserService } from '../../../services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SimpleTag } from '../../../models/SimpleTag';
+import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
     selector: 'questions',
@@ -15,11 +17,16 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class QuestionsComponent {
     allQuestions: Array<QuestionFromServer>;
+
+    //for filtering
     private searchStr: string = "";
-    private allTags: Array<CategoryTag>;
-    private searchTags: string[] = [];
-    private searchStack: string;
+    //by stack
     private allStacks;
+    private searchStack: string;
+    //by tags
+    private allTags: Array<CategoryTag>;
+    private filteredTagList: CategoryTag = new CategoryTag();
+    private searchTags = new Array<SimpleTag>();
 
     constructor(private _questionService: QuestionService, private _userService: UserService, private _router: Router, private _route: ActivatedRoute) { 
         this.allStacks = this._userService.getStacks();
@@ -33,25 +40,20 @@ export class QuestionsComponent {
             })
     }
 
-    public addFilterTag(t: string) {
-        //not yet in list -- add
-        // if (this.searchTags.hasOwnProperty(t)) {
-        //     this.searchTags[t] = !this.searchTags[t];
-        // }
-        // else {
-
-        //     this.searchTags[t] = true;
-        // }
-        let idx = this.searchTags.indexOf(t);
-        if (idx < 0) {
-            this.searchTags.push(t);
-            // this.allQuestions.filter(question => question.tags);
+    public updateTagsToShow() {
+        this.searchTags = new Array<SimpleTag>();
+        if (this.searchStack != "") {
+            this.filteredTagList = this.allTags.filter(t => t.categoryName == this.searchStack)[0];
+            this.filteredTagList.tags.forEach(tag => {
+                let t = new SimpleTag();
+                t.tagId = tag.tagId;
+                t.tagName = tag.tagName;
+                this.searchTags.push(t);
+            });
         }
-        //already in list -- remove
         else {
-            this.searchTags.splice(idx, 1);
+            this.filteredTagList = new CategoryTag();
         }
-        console.log(this.searchTags);
     }
         
 }
