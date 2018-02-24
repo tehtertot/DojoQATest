@@ -82,7 +82,7 @@ import { StripHtmlPipe } from './pipes/stripHtml.pipe';
           { path: 'ask', component: AskComponent },
           { path: ':id', component: QuestionComponent, resolve: { question: SingleQuestionResolver }}
       ] },
-      { path: 'leaderboard', component: LeaderboardComponent, canActivate: [AuthGuard] },
+      { path: 'leaderboard', component: LeaderboardComponent, canActivate: [AuthGuard], resolve: { allQuestions: AllQuestionsResolver} },
       { path: 'logout', component: LogoutComponent },
       { path: '**', redirectTo: 'home/login' }
     ])

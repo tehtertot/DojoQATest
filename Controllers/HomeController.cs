@@ -54,7 +54,8 @@ namespace DojoQA.Controllers
             IdentityResult result = await _userManager.CreateAsync(newUser, user.Password);
             if (result.Succeeded) {
                 ClaimsIdentity identity = await GetClaimsIdentity(user.Email, user.Password);
-                return new OkObjectResult(GetJwtToken(identity, user.Email));
+                var token = await GetJwtToken(identity, user.Email);
+                return new OkObjectResult(token);
             }
             ModelState.AddModelError("registration", "email is already registered");
             return BadRequest(ModelState);
@@ -75,7 +76,8 @@ namespace DojoQA.Controllers
                 return BadRequest(ModelState);
             }
 
-            return new OkObjectResult(GetJwtToken(identity, login.Email));
+            var token = await GetJwtToken(identity, login.Email);
+            return new OkObjectResult(token);
         }
 
         private async Task<ClaimsIdentity> GetClaimsIdentity(string email, string password) {
