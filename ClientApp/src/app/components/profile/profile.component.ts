@@ -26,8 +26,7 @@ export class ProfileComponent {
             .subscribe(
                 (userInfo) => {
                     this.setUser(userInfo);
-                },
-                (err) => console.log(err));
+                });
     }
 
     updateProfile() {

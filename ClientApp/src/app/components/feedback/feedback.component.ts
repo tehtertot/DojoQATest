@@ -21,8 +21,8 @@ export class FeedbackComponent {
         //not getting correct userid back
         this.feedback.user_id = this._userService.getUserId();
         this._feedbackService.submitFeedback(this.feedback).subscribe(
-            (res) => console.log(`hello ${res}`),
-            (err) => console.log(`bad ${err}`));
+            (res) => console.log(res),
+            (err) => console.log(err));
     }
 
 }

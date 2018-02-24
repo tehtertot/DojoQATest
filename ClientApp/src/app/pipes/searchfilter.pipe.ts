@@ -14,7 +14,6 @@ export class SearchFilterPipe implements PipeTransform {
 
         //filter by stack if selected
         if (searchStack != null && searchStack != "") {
-            console.log(searchStack);
             value = value.filter(q => q.stack == searchStack);
             //and return results if no search criteria
             if (searchStr == "") {
