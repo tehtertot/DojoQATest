@@ -10,7 +10,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 //components
 import { AppComponent } from './app.component';
-  import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { FeedbackComponent } from './components/feedback/feedback.component';
 import { HomeComponent } from './components/home/home.component';
   import { LoginComponent } from './components/home/login/login.component';
@@ -46,7 +45,6 @@ import { StripHtmlPipe } from './pipes/stripHtml.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
     FeedbackComponent,
     HomeComponent,
     LoginComponent,

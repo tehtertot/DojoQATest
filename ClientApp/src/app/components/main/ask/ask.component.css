@@ -1,28 +1,28 @@
+h3 {
+    margin-left: 5%;
+}
+
 .question-form {
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 
-.question-form > mat-form-field {
-    width: 90%;
-}
+    .question-form > mat-form-field {
+        width: 90%;
+    }
 
-mat-form-field {
-    margin: 5px auto;
-}
+    mat-form-field {
+        margin: 5px auto;
+    }
 
-button {
-    margin: 20px auto;
-    width: 40px;
-}
+    button {
+        margin: 20px auto;
+        width: 40px;
+    }
 
-.tags {
-    margin-top: 40px;
-    margin-left: 5%;
-    width: 90%;
-}
-
-h3 {
-    margin-left: 5%;
-}
+    .tags {
+        margin-top: 40px;
+        margin-left: 5%;
+        width: 90%;
+    }

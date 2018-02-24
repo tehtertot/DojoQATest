@@ -2,45 +2,33 @@
     padding: 5%;
 }
 
+/* all form fields */
 mat-form-field {
     width: 100%;
     margin: 20px auto;
 }
 
-.info {
-    font-size: 80%;
-    text-align: center;
-    vertical-align: center;
-}
+/* main question */
+    .question {
+        padding: 0;
+    }
+    .taginfo {
+        font-size: 80%;
+        margin-top: 30px;
+    }
+    .spacer {
+        flex: 1 1 auto;
+    }
+    /* asked by whom/date info */
+    .info {
+        font-size: 80%;
+        text-align: center;
+        vertical-align: center;
+    }
 
-.taginfo {
-    font-size: 80%;
-    margin-top: 30px;
-}
-
-.mat-fab.mat-small {
-    min-width: 1%;
-    vertical-align: top;
-    width: 20px;
-    height: 20px;
-}
-
+/* answers */
 mat-card {
     margin-left: 5%;
     width: 85%;
     margin-top: 20px;
-}
-
-.spacer {
-    flex: 1 1 auto;
-}
-
-.votebutton {
-    padding: 0;
-    margin: 0;
-    width: 25px;
-}
-
-mat-toolbar-row {
-    align-items: flex-start;
 }
