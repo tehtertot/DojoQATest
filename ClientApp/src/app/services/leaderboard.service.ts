@@ -10,9 +10,5 @@ import { Leader } from '../models/Leader';
 export class LeaderboardService {
 
   constructor(private _http: HttpClient) { }
-
-  //*********** QUESTIONS *************//
-  getLeaders(type: string): Observable<Array<Leader>> {
-    return this._http.get<Array<Leader>>(`/leaderboard/${type}`);
-  }
+  
 }

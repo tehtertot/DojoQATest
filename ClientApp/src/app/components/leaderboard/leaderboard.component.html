@@ -4,9 +4,9 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
-<!-- <div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="20px">
+<div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="20px">
     <div fxFlex="40%">
-        <h3>Askers</h3>
+        <h3>Top Seekers</h3>
         <mat-table [dataSource]="questionLeadersData">
             <ng-container matColumnDef="name">
                 <mat-header-cell *matHeaderCellDef> Student Name </mat-header-cell>
@@ -23,7 +23,7 @@
     </div>
     <mat-divider [vertical]="true"></mat-divider>
     <div fxFlex="40%">
-        <h3>Answerers</h3>
+        <h3>Top Finders</h3>
         <mat-table [dataSource]="answerLeadersData">
             <ng-container matColumnDef="name">
                 <mat-header-cell *matHeaderCellDef> Student Name </mat-header-cell>
@@ -38,4 +38,4 @@
             <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
     </div>
-</div> -->
+</div>
