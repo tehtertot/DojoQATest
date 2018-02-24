@@ -3,36 +3,46 @@
         <span>Edit Your Info</span>
     </mat-toolbar-row>
 </mat-toolbar>
-<form (submit)="updateProfile()" #editForm="ngForm" class="home-form">
-    <mat-form-field>
-        <input matInput placeholder="Email Address" type="email" id="email" name="email" required [(ngModel)]="user.Email" #email="ngModel" disabled>
-    </mat-form-field>
+<div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+    <form (submit)="updateProfile()" #editForm="ngForm" class="home-form" fxFlex="50%">
+        <mat-form-field>
+            <input matInput placeholder="Email Address" type="email" id="email" name="email" required [(ngModel)]="user.Email" #email="ngModel" disabled>
+        </mat-form-field>
+        
+        <mat-form-field>
+            <input matInput placeholder="First Name" type="text" id="firstName" name="firstName" required [(ngModel)]="user.FirstName" #firstName="ngModel" minlength="2">
+        </mat-form-field>
     
-    <mat-form-field>
-        <input matInput placeholder="First Name" type="text" id="firstName" name="firstName" required [(ngModel)]="user.FirstName" #firstName="ngModel" minlength="2">
-    </mat-form-field>
-
-    <mat-form-field>
-        <input matInput placeholder="Last Name" type="text" id="lastname" name="lastname" required [(ngModel)]="user.LastName" #lastname="ngModel" autocomplete="off" minlength="2">
-    </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Last Name" type="text" id="lastname" name="lastname" required [(ngModel)]="user.LastName" #lastname="ngModel" autocomplete="off" minlength="2">
+        </mat-form-field>
+        
+        <mat-form-field>
+            <mat-select [(value)]="user.CurrentStack" required placeholder="Current Stack">
+                <mat-option *ngFor="let s of stacks; let idx=index" [value]="idx">{{s}}</mat-option>
+            </mat-select>
+        </mat-form-field>
     
-    <mat-form-field>
-        <mat-select [(value)]="user.CurrentStack" required placeholder="Current Stack">
-            <mat-option *ngFor="let s of stacks; let idx=index" [value]="idx">{{s}}</mat-option>
-        </mat-select>
-    </mat-form-field>
-
-    <mat-form-field>
-        <input matInput placeholder="LinkedIn Profile" type="text" name="linkedin" #linkedin="ngModel" [(ngModel)]="user.LinkedInAccountURL">
-    </mat-form-field>
-    
-    <!-- resetting password also requires validation of current password. separate form? -->
-    <!-- <mat-form-field>
-        <input matInput placeholder="Password" type="password" name="password" required [(ngModel)]="user.Password" #password="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" matTooltip="at least 6 characters, including at least 1 upper, 1 lower, 1 number, and 1 special character" validateEqual="confirm">
-    </mat-form-field>
-    <mat-form-field>
-        <input matInput placeholder="Confirm Password" type="password" name="confirm" required [(ngModel)]="user.confirmPassword" #confirm="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" validateEqual="password" reverse="false">
-    </mat-form-field> -->
-
-    <button class="submit-button" mat-raised-button color="accent" [disabled]="!editForm.valid">Update</button>
-</form>
+        <mat-form-field>
+            <input matInput placeholder="LinkedIn Profile" type="text" name="linkedin" #linkedin="ngModel" [(ngModel)]="user.LinkedInAccountURL">
+        </mat-form-field>
+        
+        
+        <button class="submit-button" mat-raised-button color="accent" [disabled]="!editForm.valid">Update</button>
+    </form>
+    <mat-divider [vertical]="true"></mat-divider>
+    <form (submit)="updatePassword()" #pwForm="ngForm" class="home-form" fxFlex="50%">
+        <h4>Change Your Password</h4>
+        <mat-form-field>
+            <input matInput placeholder="Current Password" type="password" name="password" required [(ngModel)]="user.Password" #password="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" validateEqual="confirm">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="New Password" type="password" name="newp" required [(ngModel)]="user.NewPassword" #newp="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" matTooltip="at least 6 characters, including at least 1 upper, 1 lower, 1 number, and 1 special character" validateEqual="confirmnew">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Confirm New Password" type="password" name="confirmnew" required [(ngModel)]="user.ConfirmNew" #confirmnew="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" validateEqual="newp" reverse="false">
+        </mat-form-field>
+        <p class="showerror">{{pwmessage}}</p>
+        <button class="submit-button" mat-raised-button color="accent" [disabled]="!pwForm.valid">Update</button>
+    </form>
+</div>

@@ -9,4 +9,6 @@ export class User {
     Dojo: number;
     LinkedInAccountURL: string;
     CurrentStack: number;
+    NewPassword: string;
+    ConfirmPassword: string;
 }

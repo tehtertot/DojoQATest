@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using System.Threading.Tasks;
 
 namespace DojoQA.Controllers
 {
@@ -17,27 +18,27 @@ namespace DojoQA.Controllers
     {
         private QAContext _context;
         private ClaimsPrincipal _caller;
+        private UserManager<ApplicationUser> _userManager;
         
-        public ProfileController(QAContext context, IHttpContextAccessor contextAccess) {
+        public ProfileController(QAContext context, IHttpContextAccessor contextAccess, UserManager<ApplicationUser> um) {
             _caller = contextAccess.HttpContext.User;
             _context = context;
+            _userManager = um;
         }
 
         [HttpGet("")]
-        public ApplicationUser showUserInfo() {
-            string userId = _caller.Claims.Single(c => c.Type == "id").Value;
-            return _context.Users.SingleOrDefault(u => u.Id == userId);
+        public ApplicationUser ShowUserInfo() {
+            return GetUser();
         }
 
         [HttpGet("userid")]
-        public JsonResult getUserId() {
+        public JsonResult GetUserId() {
             return Json(_caller.Claims.Single(c => c.Type == "id").Value);
         }
 
         [HttpPost("update")]
-        public ApplicationUser updateUser([FromBody] RegisterUser userInfo) {
-            string userId = _caller.Claims.Single(c => c.Type == "id").Value;
-            ApplicationUser user = _context.Users.SingleOrDefault(u => u.Id == userId);
+        public ApplicationUser UpdateUser([FromBody] RegisterUser userInfo) {
+            ApplicationUser user = GetUser();
 
             //logged in user is only editing own profile
             if (user.Email == userInfo.Email) {
@@ -50,6 +51,21 @@ namespace DojoQA.Controllers
             }
 
             return user;
+        }
+
+        [HttpPost("changepw")]
+        public async Task<IActionResult> ChangeUserPassword([FromBody] RegisterUser userInfo) {
+            ApplicationUser user = GetUser();
+            var updated = await _userManager.ChangePasswordAsync(user, userInfo.Password, userInfo.NewPassword);
+            if (updated.Succeeded) {
+                return new OkObjectResult(true);
+            }
+            return BadRequest(false);
+        }
+
+        private ApplicationUser GetUser() {
+            string userId = _caller.Claims.Single(c => c.Type == "id").Value;
+            return _context.Users.SingleOrDefault(u => u.Id == userId);
         }
     }
 }

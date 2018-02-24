@@ -12,5 +12,6 @@ namespace DojoQA.Models
         public string Password { get; set; }
         public int CurrentStack { get; set; }    
         public string LinkedInAccountURL { get; set; }
+        public string NewPassword { get; set; }
     }
 }

@@ -16,6 +16,7 @@ import { UserFromServer } from '../../models/UserFromServer';
 export class ProfileComponent {
     user: User = new User();
     stacks: string[];
+    pwmessage: string;
 
     constructor(private _userService: UserService, private _router: Router) { }
 
@@ -35,6 +36,12 @@ export class ProfileComponent {
                 // this.setUser(userInfo);
                 this._router.navigate(['/questions/all']);
             })
+    }
+
+    updatePassword() {
+        this._userService.updatePassword(this.user)
+            .subscribe((userInfo) => this.pwmessage = "password updated",
+            (err) => this.pwmessage = "error updating password");
     }
 
     private setUser(fromServer: UserFromServer) {

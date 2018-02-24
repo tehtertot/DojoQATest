@@ -63,4 +63,8 @@ export class UserService {
   updateUser(user: User): Observable<UserFromServer> {
     return this._http.post<UserFromServer>("/profile/update", user);
   }
+
+  updatePassword(user: User): Observable<any> {
+    return this._http.post("/profile/changepw", user);
+  }
 }
