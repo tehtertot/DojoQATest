@@ -10,5 +10,5 @@ export class User {
     LinkedInAccountURL: string;
     CurrentStack: number;
     NewPassword: string;
-    ConfirmPassword: string;
+    ConfirmNew: string;
 }
