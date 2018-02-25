@@ -37,6 +37,7 @@ mat-icon {
     top: 60px;
     left: 0;
     z-index: 0;
+    min-height: 250px;
   }
     #sidenav {
       position: fixed;
