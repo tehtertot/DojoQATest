@@ -11,7 +11,7 @@ export class FeedbackService {
     // https://script.google.com/macros/u/0/s/AKfycbyeTwcrXo_cU3ACd1IKoRFYrZKDmo9COjPkJUslCWYBryWCMnQ/exec
     // https://script.google.com/a/codingdojo.com/macros/s/AKfycbyeTwcrXo_cU3ACd1IKoRFYrZKDmo9COjPkJUslCWYBryWCMnQ/exec
     submitFeedback(feedback: Feedback) : Observable<any> {
-        return this._http.post("https://script.google.com/a/codingdojo.com/macros/s/AKfycbyeTwcrXo_cU3ACd1IKoRFYrZKDmo9COjPkJUslCWYBryWCMnQ/exec", feedback);
-        // return this._http.get("https://script.google.com/a/codingdojo.com/macros/s/AKfycbyeTwcrXo_cU3ACd1IKoRFYrZKDmo9COjPkJUslCWYBryWCMnQ/exec");
+        // return this._http.post("https://script.google.com/a/codingdojo.com/macros/s/AKfycbyeTwcrXo_cU3ACd1IKoRFYrZKDmo9COjPkJUslCWYBryWCMnQ/exec", feedback);
+        return this._http.get(`https://script.google.com/a/codingdojo.com/macros/s/AKfycbyeTwcrXo_cU3ACd1IKoRFYrZKDmo9COjPkJUslCWYBryWCMnQ/exec?user_id=${feedback.user_id}&category=${feedback.category}&description=${feedback.description}&callback=?`);
     }
 }
