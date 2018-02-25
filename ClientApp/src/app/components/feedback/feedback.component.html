@@ -3,7 +3,7 @@
         <span class="spacer"></span><span>Share Feedback</span><span class="spacer"></span>
     </mat-toolbar-row>
 </mat-toolbar>
-<form (submit)="sendFeedback()" #feedbackForm="ngForm" class="home-form"> 
+<form #feedbackForm="ngForm" class="home-form"> 
 <mat-form-field>
     <mat-select [(ngModel)]="data.category" required placeholder="Category" required name="cat">
             <mat-option value="Search Functionality">Search Functionality</mat-option>
