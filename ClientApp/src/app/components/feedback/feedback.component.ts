@@ -1,28 +1,16 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Inject } from '@angular/core';
 
-import { UserService } from '../../services/user.service';
-import { Feedback } from '../../models/Feedback';
-import { FeedbackService } from '../../services/feedback.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
-  selector: 'app-feedback',
-  templateUrl: './feedback.component.html',
-  styleUrls: ['../home/home.component.css']
+    selector: 'feedback-dialog',
+    templateUrl: './feedback.component.html',
+    styleUrls: ['../main/question/question.component.css']
 })
-export class FeedbackComponent {
-    public loginerrors: string = null;
-    public categories = ['Search Functionality', 'Q/A Functionality', 'User Management', 'Ranking', 'General Usability', 'Other'];
-    public feedback: Feedback = new Feedback();
+export class FeedbackDialog {
+    constructor(public dialogRef: MatDialogRef<FeedbackDialog>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
-    constructor(private _userService: UserService, private _feedbackService: FeedbackService, private _router: Router) { }
-
-    sendFeedback() {
-        //not getting correct userid back
-        this.feedback.user_id = this._userService.getUserId();
-        this._feedbackService.submitFeedback(this.feedback).subscribe(
-            (res) => console.log(res),
-            (err) => console.log(err));
+    cancel(): void {
+        this.dialogRef.close();
     }
-
 }

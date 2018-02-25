@@ -1,12 +1,23 @@
+<mat-toolbar color="default">
+    <mat-toolbar-row class="mat-elevation-z6">
+        <span class="spacer"></span><span>Share Feedback</span><span class="spacer"></span>
+    </mat-toolbar-row>
+</mat-toolbar>
 <form (submit)="sendFeedback()" #feedbackForm="ngForm" class="home-form"> 
-    <mat-form-field>
-        <mat-select [(ngModel)]="feedback.category" required placeholder="Category" required name="cat">
-            <mat-option *ngFor="let c of categories" [value]="c">{{c}}</mat-option>
+<mat-form-field>
+    <mat-select [(ngModel)]="data.category" required placeholder="Category" required name="cat">
+            <mat-option value="Search Functionality">Search Functionality</mat-option>
+            <mat-option value="Q/A Functionality">Q/A Functionality</mat-option>
+            <mat-option value="User Management">User Management</mat-option>
+            <mat-option value="Ranking">Ranking</mat-option>
+            <mat-option value="General Usability">General Usability</mat-option>
+            <mat-option value="Other">Other</mat-option>
         </mat-select>
     </mat-form-field>
     <mat-form-field>
-        <textarea matInput placeholder="Detailed Feedback" required [(ngModel)]="feedback.description" name="description"></textarea>
+        <textarea matInput placeholder="Detailed Feedback" required [(ngModel)]="data.description" name="description"></textarea>
     </mat-form-field>
     
-    <button class="submit-button" mat-raised-button color="primary" [disabled]="!feedbackForm.valid">Submit</button>
+    <button mat-raised-button (click)="cancel()">Cancel</button>
+    <button class="submit-button" mat-raised-button color="primary" [disabled]="!feedbackForm.valid" [mat-dialog-close]="data">Submit</button>
 </form>

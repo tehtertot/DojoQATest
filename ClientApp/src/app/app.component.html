@@ -4,7 +4,7 @@
           <button mat-icon-button (click)="sidenav.toggle()"><mat-icon>menu</mat-icon></button>
           <span id="dojo">DOJO | questions</span>
           <span class="fill-width"></span>
-          <mat-icon [routerLink]="['/feedback']" matTooltip="submit feedback" matTooltipPosition="left">help_outline</mat-icon>
+          <mat-icon (click)="openFeedback()" matTooltip="submit feedback" matTooltipPosition="left">help_outline</mat-icon>
       </mat-toolbar-row>
   </mat-toolbar>
   <mat-sidenav-container>

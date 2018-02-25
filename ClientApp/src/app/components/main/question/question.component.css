@@ -16,9 +16,6 @@ mat-form-field {
         font-size: 80%;
         margin-top: 30px;
     }
-    .spacer {
-        flex: 1 1 auto;
-    }
     /* asked by whom/date info */
     .info {
         font-size: 80%;

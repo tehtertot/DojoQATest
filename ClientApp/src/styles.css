@@ -17,3 +17,7 @@ mat-chip {
   padding: 4px;
   margin-right: 8px;
 }
+
+.spacer { 
+  flex: 1 1 auto;
+}

@@ -10,7 +10,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 //components
 import { AppComponent } from './app.component';
-import { FeedbackComponent } from './components/feedback/feedback.component';
+import { FeedbackDialog } from './components/feedback/feedback.component';
 import { HomeComponent } from './components/home/home.component';
   import { LoginComponent } from './components/home/login/login.component';
   import { RegistrationComponent } from './components/home/registration/registration.component';
@@ -45,7 +45,7 @@ import { StripHtmlPipe } from './pipes/stripHtml.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-    FeedbackComponent,
+    FeedbackDialog,
     HomeComponent,
     LoginComponent,
     RegistrationComponent,
@@ -72,7 +72,6 @@ import { StripHtmlPipe } from './pipes/stripHtml.pipe';
     FlexLayoutModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'home/login', pathMatch: 'full' },
-      { path: 'feedback', component: FeedbackComponent },
       { path: 'home', component: HomeComponent, children: [
           { path:'', redirectTo: 'login', pathMatch: 'full' },
           { path: 'login', component: LoginComponent },
@@ -103,7 +102,8 @@ import { StripHtmlPipe } from './pipes/stripHtml.pipe';
   ],
   entryComponents: [
     QuestionEditDialog,
-    AnswerEditDialog
+    AnswerEditDialog,
+    FeedbackDialog
   ],
   bootstrap: [AppComponent]
 })
