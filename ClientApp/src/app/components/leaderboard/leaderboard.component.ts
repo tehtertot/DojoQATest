@@ -17,6 +17,7 @@ import { Answer } from '../../models/Answer';
     styleUrls: ['./leaderboard.component.css']
 })
 export class LeaderboardComponent implements OnInit {
+    private allQuestions: Array<QuestionFromServer>;
     private filteredQuestions: Array<QuestionFromServer> = [];
     private filteredAnswers: Array<Answer> = [];
     public displayedColumns = ["name", "count"];
@@ -24,20 +25,23 @@ export class LeaderboardComponent implements OnInit {
     public answerLeadersData;
 
     //potential filters
-    private stackFilter: string;
+    public stackFilter: string = "";
     private monthFilter: StackMonth;
 
     constructor(private _leaderboardService: LeaderboardService, private _route: ActivatedRoute) {
     }
     
     ngOnInit() {
-        this.filteredQuestions = this._route.snapshot.data.allQuestions;
-        // this.questionLeadersData = this.allQuestions.filter(q => q.stack == this.stackFilter);
+        this.allQuestions = this._route.snapshot.data.allQuestions;
         this.setQuestionData();
         this.setAnswerData();
     }
 
     setQuestionData() {
+        this.filteredQuestions = this.allQuestions;
+        if (this.stackFilter != "") {
+            this.filteredQuestions = this.allQuestions.filter(q => q.stack == this.stackFilter);
+        }
         let questionsByUser = _.groupBy(this.filteredQuestions, q => [q.askedById, q.askedByFirstName, q.askedByLastName]);
             
         //iterate through to get overall count value (# questions + votes)
@@ -57,10 +61,12 @@ export class LeaderboardComponent implements OnInit {
         sumUserQuestions = _.sortBy(sumUserQuestions, 'count').reverse();
         //set table data
         this.questionLeadersData = new MatTableDataSource(sumUserQuestions);
+        this.setAnswerData();
     }
 
     //iterate through all questions to get all answers
     getAllAnswers() {
+        this.filteredAnswers = [];
         this.filteredQuestions.forEach(q => {
             this.filteredAnswers = this.filteredAnswers.concat(q.answers);
         });

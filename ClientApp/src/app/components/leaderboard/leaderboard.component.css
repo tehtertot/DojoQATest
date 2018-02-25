@@ -3,3 +3,7 @@
     width: 100%;
     text-align: center;
 }
+
+.filter {
+    margin: 25px auto;
+}
