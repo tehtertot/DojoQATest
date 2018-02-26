@@ -14,7 +14,6 @@ export class UserService {
 
   private loggedIn = false;
   private userId: string;
-  private stacks = ["Web Fundamentals", "Python", "C#", "Java", "MEAN"];
 
   constructor(private _http: HttpClient) {
     this.loggedSubject = new Subject<boolean>();
@@ -42,10 +41,6 @@ export class UserService {
 
   getUserId() : string | null {
     return this.userId ? this.userId : null;
-  }
-
-  getStacks(): string[] {
-    return this.stacks;
   }
 
   registerUser(user: User): Observable<Token> {

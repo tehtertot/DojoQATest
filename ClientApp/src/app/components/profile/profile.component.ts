@@ -15,13 +15,12 @@ import { UserFromServer } from '../../models/UserFromServer';
 })
 export class ProfileComponent {
     user: User = new User();
-    stacks: string[];
+    stacks: string[] = ["Web Fundamentals", "Python", "C#", "Java", "MEAN"];
     pwmessage: string;
 
     constructor(private _userService: UserService, private _router: Router) { }
 
     ngOnInit() {
-        this.stacks = this._userService.getStacks();
         this._userService.getUserInfo()
             .subscribe(
                 (userInfo) => {

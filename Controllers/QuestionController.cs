@@ -154,7 +154,7 @@ namespace DojoQA.Controllers
         // ******************************* TAGS ********************************* //
         [HttpGet("tags")]
         public List<CategoryWithTagsViewModel> getAllTagsWithCategories() {
-            List<StackCategory> allCategories = _context.StackCategories.Include(c => c.AssociatedTags).ToList();
+            List<StackCategory> allCategories = _context.StackCategories.Include(c => c.AssociatedTags).OrderBy(c => c.SortOrder).ToList();
             List<CategoryWithTagsViewModel> categoriesWithTags = new List<CategoryWithTagsViewModel>();
             foreach (StackCategory c in allCategories)
             {

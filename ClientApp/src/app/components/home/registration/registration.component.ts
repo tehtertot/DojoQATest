@@ -13,11 +13,10 @@ import { User } from '../../../models/User';
 export class RegistrationComponent {
   public user: User = new User();
   public regerrors: string = null;
-  public stacks: string[];
+  //this list of stacks is associated with the C# ApplicationUser CurrentStack enum
+  public stacks: string[] = ["Web Fundamentals", "Python", "C#", "Java", "MEAN"];
 
-  constructor(private _userService: UserService, private _router: Router) { 
-    this.stacks = this._userService.getStacks();
-  }
+  constructor(private _userService: UserService, private _router: Router) { }
 
   register() {
     this._userService.registerUser(this.user)

@@ -3,9 +3,9 @@
     <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="0">
         <input [(ngModel)]="searchStr" class="mat-elevation-z2 searchbar" fxFlex="60%" placeholder="search...">
         <div fxFlex="5%"></div>
-        <select class="mat-elevation-z2 searchbar" fxFlex="35%" [(ngModel)]="searchStack" (change)="updateTagsToShow()">
+        <select class="mat-elevation-z2 searchbar" fxFlex="35%" [(ngModel)]="searchStack"> <!-- (change)="updateTagsToShow()" -->
             <option value="">any</option>
-            <option *ngFor="let s of allStacks">{{s}}</option>
+            <option *ngFor="let s of allStacks" [value]="s.categoryName">{{s.categoryName}}</option>
         </select>
     </div>
 </div>

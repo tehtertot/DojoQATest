@@ -21,7 +21,7 @@ export class QuestionsComponent {
     //for filtering
     public searchStr: string = "";
     //by stack
-    public allStacks;
+    public allStacks: Array<CategoryTag>;
     public searchStack: string;
     //by tags
     public allTags: Array<CategoryTag>;
@@ -29,10 +29,10 @@ export class QuestionsComponent {
     public searchTags = new Array<SimpleTag>();
 
     constructor(private _questionService: QuestionService, private _userService: UserService, private _router: Router, private _route: ActivatedRoute) { 
-        this.allStacks = this._userService.getStacks();
     }
     
     ngOnInit() {
+        this._questionService.getAllTags().subscribe(tags => this.allStacks = tags);
         this.allQuestions = this._route.snapshot.data.allQuestions;
         this._questionService.getAllTags()
             .subscribe((tags) => {
