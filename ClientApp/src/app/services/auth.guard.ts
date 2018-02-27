@@ -9,9 +9,11 @@ export class AuthGuard implements CanActivate {
   canActivate() {
     if(!this._userService.isLoggedIn())
     {
+      console.log("can't activate");
        this._router.navigate(['/home']);
        return false;
     }
+    console.log("can activate!");
     return true;
   }
 }
