@@ -15,8 +15,6 @@ export class LoginComponent {
   public loginerrors: string = null;
 
   constructor(private _userService: UserService, private _router: Router) { 
-    this.login.Email = "ncaldwell@codingdojo.com";
-    this.login.Password = "123qwe!@#QWE";
   }
 
   userlogin() {
