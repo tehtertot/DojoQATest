@@ -22,7 +22,7 @@ namespace DojoQA.Models
         public DateTime NotBefore { get; set; } = DateTime.UtcNow;
 
         /// 4.1.6.  "iat" (Issued At) Claim - The "iat" (issued at) claim identifies the time at which the JWT was issued.
-        public DateTime IssuedAt { get; set; } = DateTime.UtcNow;
+        public DateTime IssuedAt { get { return DateTime.UtcNow; } }
 
         /// Set the timespan the token will be valid for (default is 120 min)
         public TimeSpan ValidFor { get; set; } = TimeSpan.FromMinutes(120);
