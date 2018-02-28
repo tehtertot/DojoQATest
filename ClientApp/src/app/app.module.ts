@@ -7,6 +7,8 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 //components
 import { AppComponent } from './app.component';
@@ -86,7 +88,8 @@ import { StripHtmlPipe } from './pipes/stripHtml.pipe';
       { path: 'leaderboard', component: LeaderboardComponent, canActivate: [AuthGuard], resolve: { allQuestions: AllQuestionsResolver} },
       { path: 'logout', component: LogoutComponent },
       { path: '**', redirectTo: 'home/login' }
-    ])
+    ]),
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [
     AuthGuard,
