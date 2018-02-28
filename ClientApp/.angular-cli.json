@@ -18,7 +18,6 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
-      "serviceWorker": true,
       "styles": [
         "styles.css"
       ],
@@ -56,8 +55,7 @@
   },
   "defaults": {
     "styleExt": "css",
-    "component": {
-    },
+    "component": {},
     "build": {
       "progress": true
     }

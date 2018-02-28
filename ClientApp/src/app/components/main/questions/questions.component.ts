@@ -15,7 +15,7 @@ import { forEach } from '@angular/router/src/utils/collection';
     templateUrl: './questions.component.html',
     styleUrls: ['./questions.component.css']
 })
-export class QuestionsComponent implements OnInit {
+export class QuestionsComponent {
     public allQuestions: Array<QuestionFromServer>;
 
     //for filtering
