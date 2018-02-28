@@ -36,9 +36,8 @@ export class AppComponent {
 
   sendFeedback(feedback: Feedback) {
     //not getting correct userid back
-    console.log("sending feedback");
     this._feedbackService.submitFeedback(feedback).subscribe(
-        (res) => console.log(res),
+        (res) => console.log("feedback sent"),
         (err) => console.log(err));
   }
 }

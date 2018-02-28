@@ -25,8 +25,6 @@ export class LoginComponent {
 
   successfulRedirect(token: string) {
       localStorage.setItem('auth_token', token);
-      console.log("is the token received?");
-      console.log(token);
       this._userService.setLoggedInStatus(true);
       this._router.navigate(['/questions/all']);
   }
