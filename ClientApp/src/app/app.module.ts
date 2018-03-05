@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { QuillModule } from 'ngx-quill';
 
 //components
 import { AppComponent } from './app.component';
@@ -63,7 +64,8 @@ import { StripHtmlPipe } from './pipes/stripHtml.pipe';
     EqualValidator,
     TruncatePipe,
     SearchFilterPipe,
-    StripHtmlPipe
+    StripHtmlPipe,
+    QuillModule
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

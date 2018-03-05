@@ -17,3 +17,9 @@ mat-chip {
   padding: 4px;
   margin-right: 8px;
 }
+
+.edit-icon {
+  border-radius: 5px;
+  border: .1px solid gray;
+  padding: 2px;
+}

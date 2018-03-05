@@ -14,6 +14,9 @@ export class LoginComponent {
   public login: User = new User();
   public loginerrors: string = null;
 
+  public inputText;
+  public selectedText: string = "";
+  
   constructor(private _userService: UserService, private _router: Router) { }
 
   userlogin() {
@@ -28,4 +31,25 @@ export class LoginComponent {
       this._userService.setLoggedInStatus(true);
       this._router.navigate(['/questions/all']);
   }
+
+  showChanges() {
+      let x = document.getElementById("text").innerHTML;
+      console.log(x);
+  }
+
+  // showSelectedText() {
+  //   if (window.getSelection) {
+  //       this.selectedText = window.getSelection().toString();
+  //       console.log(this.selectedText);
+  //   }
+  // }
+
+  // bold() {
+  //   console.log("bolding");
+  //   console.log(this.selectedText);
+  //   let x = this.inputText.replace(this.selectedText, `<b>${this.selectedText}</b>`);
+  //   console.log(x);
+  // }
+
+
 }

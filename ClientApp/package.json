@@ -29,6 +29,7 @@
     "aspnet-prerendering": "^3.0.1",
     "core-js": "^2.4.1",
     "fuse.js": "3.2.0",
+    "ngx-quill": "^2.1.1",
     "rxjs": "^5.5.6",
     "underscore": "^1.8.3",
     "zone.js": "^0.8.19"
