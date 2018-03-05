@@ -33,9 +33,9 @@ export class QuestionComponent implements OnInit {
     submitAnswer() {
         this._questionService.addAnswer(this.newAnswer, this.question.questionId)
             .subscribe((updatedQuestion) => {
-                // this.question = updatedQuestion;
+                this.question = updatedQuestion;
                 // this.newAnswer = new Answer();
-                this._router.navigate(['/questions/all']);
+                // this._router.navigate(['/questions/all']);
             });
     }
 
@@ -112,6 +112,18 @@ export class QuestionComponent implements OnInit {
             .subscribe((res) => {
                 if (res) {
                     this.question.answers.filter(a => a.answerId == this.answerUpdate.answerId)[0].answerText = this.answerUpdate.answerText;
+                }
+            });
+    }
+
+    private deleteAnswer(answerId) {
+        this._questionService.deleteAnswer(answerId)
+            .subscribe((res) => {
+                if (res) {
+                    this._router.navigate(['/questions/all']);
+                }
+                else {
+                    console.log("error deleting answer");
                 }
             });
     }

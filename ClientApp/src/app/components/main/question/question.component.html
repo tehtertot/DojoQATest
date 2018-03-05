@@ -24,7 +24,10 @@
             <div fxFlex="33%" class="info">
                 <p>answered by: {{ans.answeredByName}}</p>
                 <p>answered on: {{ans.answeredDate | date: 'dd MMM yy h:mm a'}}</p>
-                <p><button mat-button color="warn" (click)="editAnswer(ans.answerId)" *ngIf="ans.answeredById==userId">Edit</button></p>
+                <p>
+                    <button mat-button color="warn" (click)="editAnswer(ans.answerId)" *ngIf="ans.answeredById==userId">Edit</button> | 
+                    <button mat-button color="warn" (click)="deleteAnswer(ans.answerId)" *ngIf="ans.answeredById==userId">Delete</button>
+                </p>
                 <button mat-raised-button color="primary" (click)="voteForAnswer(ans.answerId)">+{{ans.votes}}</button>
             </div>
         </mat-card-content>

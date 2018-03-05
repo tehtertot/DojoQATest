@@ -117,7 +117,7 @@ namespace DojoQA.Controllers
             a.Question = _context.Questions.Single(q => q.QuestionId == id);
             _context.Answers.Add(a);
             _context.SaveChanges();
-            return new QuestionWithAnswersViewModel(_context.Questions.Single(q => q.QuestionId == id));
+            return new QuestionWithAnswersViewModel(_context.Questions.Include(q => q.AskedBy).Include(q => q.Answers).Include(q => q.Tags).ThenInclude(t => t.Tag).ThenInclude(x => x.StackCategory).Single(q => q.QuestionId == id));
         }
 
         [HttpPost("answer/edit")]
@@ -131,6 +131,21 @@ namespace DojoQA.Controllers
             catch {
                 return false;
             }
+        }
+
+        [HttpGet("answer/delete/{id:int}")]
+        public bool deleteAnswer(int id) {
+            string userId = _caller.Claims.Single(c => c.Type == "id").Value;
+            ApplicationUser user = _context.Users.SingleOrDefault(u => u.Id == userId);
+            Answer answerToDelete = _context.Answers.SingleOrDefault(a => a.AnsweredBy == user && a.AnswerId == id);
+            if (answerToDelete != null) {
+                //delete associated votes
+                _context.AnswerVotes.RemoveRange(_context.AnswerVotes.Where(a => a.AnswerId == id));
+                _context.Answers.Remove(answerToDelete);
+                _context.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
         [HttpGet("answer/vote/{id:int}")]

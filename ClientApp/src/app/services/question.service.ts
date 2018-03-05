@@ -49,6 +49,10 @@ export class QuestionService {
     return this._http.get<boolean>(`/questions/answer/vote/${answerId}`);
   }
 
+  deleteAnswer(answerId: number) : Observable<boolean> {
+    return this._http.get<boolean>(`/questions/answer/delete/${answerId}`);
+  }
+
   //************** TAGS ***************//
   getAllTags(): Observable<Array<CategoryTag>> {
     return this._http.get<Array<CategoryTag>>("/questions/tags");
