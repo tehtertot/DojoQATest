@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { UserService } from '../../services/user.service';
@@ -17,6 +17,7 @@ export class ProfileComponent {
     user: User = new User();
     stacks: string[] = ["Web Fundamentals", "Python", "C#", "Java", "MEAN"];
     pwmessage: string;
+    @ViewChild("pic") picFile;
 
     constructor(private _userService: UserService, private _router: Router) { }
 
@@ -40,6 +41,16 @@ export class ProfileComponent {
         this._userService.updatePassword(this.user)
             .subscribe((userInfo) => this.pwmessage = "password updated",
             (err) => this.pwmessage = "error updating password");
+    }
+
+    changePic() {
+        let pic = this.picFile.nativeElement;
+        if (pic.files && pic.files[0]) {
+            let fileToUpload = pic.files[0];
+            console.log(fileToUpload);
+            this._userService.uploadPhoto(fileToUpload)
+                .subscribe(res => console.log(res), err => console.log(err));
+        }
     }
 
     private setUser(fromServer: UserFromServer) {

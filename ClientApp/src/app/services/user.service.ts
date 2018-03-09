@@ -62,4 +62,9 @@ export class UserService {
   updatePassword(user: User): Observable<any> {
     return this._http.post("/profile/changepw", user);
   }
+
+  uploadPhoto(photoFile) {
+    console.log(typeof photoFile);
+    return this._http.post("/profile/updatePic", {file: photoFile});
+  }
 }

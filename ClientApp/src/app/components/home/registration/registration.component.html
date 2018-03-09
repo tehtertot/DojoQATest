@@ -14,10 +14,10 @@
         </mat-select>
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="Password" type="password" name="password" required [(ngModel)]="user.Password" #password="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" matTooltip="at least 6 characters, including at least 1 upper, 1 lower, 1 number, and 1 special character" validateEqual="confirm">
+        <input matInput placeholder="Password" type="password" name="password" required [(ngModel)]="user.Password" #password="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&.-])[A-Za-z\d$@$!%*#?&.-]{6,}$" matTooltip="at least 6 characters, including at least 1 upper, 1 lower, 1 number, and 1 special character" validateEqual="confirm">
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="Confirm Password" type="password" name="confirm" required [(ngModel)]="user.confirmPassword" #confirm="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" validateEqual="password" reverse="false">
+        <input matInput placeholder="Confirm Password" type="password" name="confirm" required [(ngModel)]="user.confirmPassword" #confirm="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&.-])[A-Za-z\d$@$!%*#?&.-]{6,}$" validateEqual="password" reverse="false">
     </mat-form-field>
     
     <p class="showerror">{{regerrors}}</p>

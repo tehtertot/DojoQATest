@@ -9,6 +9,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
+using System;
+using System.IO;
 
 namespace DojoQA.Controllers
 {
@@ -61,6 +63,21 @@ namespace DojoQA.Controllers
                 return new OkObjectResult(true);
             }
             return BadRequest(false);
+        }
+
+        [HttpPost("updatePic")]
+        public void UploadPhoto([FromBody] IFormFile file) {
+            if (file == null) throw new Exception("File is null");
+            if (file.Length == 0) throw new Exception("File is empty");
+
+            using (Stream stream = file.OpenReadStream())
+            {
+                using (var binaryReader = new BinaryReader(stream))
+                {
+                    var fileContent = binaryReader.ReadBytes((int)file.Length);
+                    // await _uploadService.AddFile(fileContent, file.FileName, file.ContentType);
+                }
+            }
         }
 
         private ApplicationUser GetUser() {

@@ -31,18 +31,25 @@
         <button class="submit-button" mat-raised-button color="accent" [disabled]="!editForm.valid">Update</button>
     </form>
     <mat-divider [vertical]="true"></mat-divider>
-    <form (submit)="updatePassword()" #pwForm="ngForm" class="home-form" fxFlex="50%">
-        <h4>Change Your Password</h4>
-        <mat-form-field>
-            <input matInput placeholder="Current Password" type="password" name="password" required [(ngModel)]="user.Password" #password="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" validateEqual="confirm">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="New Password" type="password" name="newp" required [(ngModel)]="user.NewPassword" #newp="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" matTooltip="at least 6 characters, including at least 1 upper, 1 lower, 1 number, and 1 special character" validateEqual="confirmnew">
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput placeholder="Confirm New Password" type="password" name="confirmnew" required [(ngModel)]="user.ConfirmNew" #confirmnew="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" validateEqual="newp" reverse="false">
-        </mat-form-field>
-        <p class="showerror">{{pwmessage}}</p>
-        <button class="submit-button" mat-raised-button color="accent" [disabled]="!pwForm.valid">Update</button>
-    </form>
+    <div fxFlex="50%">
+        <form (submit)="updatePassword()" #pwForm="ngForm" class="home-form">
+            <h4>Change Your Password</h4>
+            <mat-form-field>
+                <input matInput placeholder="Current Password" type="password" name="password" required [(ngModel)]="user.Password" #password="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&.-])[A-Za-z\d$@$!%*#?&.-]{6,}$" validateEqual="confirm">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="New Password" type="password" name="newp" required [(ngModel)]="user.NewPassword" #newp="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&.-])[A-Za-z\d$@$!%*#?&.-]{6,}$" matTooltip="at least 6 characters, including at least 1 upper, 1 lower, 1 number, and 1 special character" validateEqual="confirmnew">
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Confirm New Password" type="password" name="confirmnew" required [(ngModel)]="user.ConfirmNew" #confirmnew="ngModel" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$" validateEqual="newp" reverse="false">
+            </mat-form-field>
+            <p class="showerror">{{pwmessage}}</p>
+            <button class="submit-button" mat-raised-button color="accent" [disabled]="!pwForm.valid">Update</button>
+        </form>
+        <form (submit)="changePic()" enctype="multipart/form-data" #picForm="ngForm" class="home-form">
+            <h4>Change Your Photo</h4>
+            <input type="file" name="profilePic" #pic />
+            <button>Add</button>
+        </form>
+    </div>
 </div>
