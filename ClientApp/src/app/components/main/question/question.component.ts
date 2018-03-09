@@ -31,6 +31,8 @@ export class QuestionComponent implements OnInit {
     }
 
     submitAnswer() {
+        console.log(this.newAnswer);
+        console.log(this.newAnswer.answerText = this.newAnswer.answerText.replace('\n', '<br>'));
         this._questionService.addAnswer(this.newAnswer, this.question.questionId)
             .subscribe((updatedQuestion) => {
                 this.question = updatedQuestion;

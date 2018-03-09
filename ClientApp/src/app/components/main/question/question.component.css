@@ -2,6 +2,10 @@
     padding: 5%;
 }
 
+.formatted-text {
+    white-space: pre-wrap;
+}
+
 /* all form fields */
 mat-form-field {
     width: 100%;

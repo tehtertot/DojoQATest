@@ -19,7 +19,8 @@
 
     <mat-card *ngFor="let ans of question.answers">
         <mat-card-content fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
-            <p [innerHTML]="ans.answerText" fxFlex="67%"></p>
+            <!-- <p [innerHTML]="ans.answerText" fxFlex="67%"></p> -->
+            <p fxFlex="67%" class="formatted-text">{{ans.answerText}}</p>
             <mat-divider [vertical]="true"></mat-divider>
             <div fxFlex="33%" class="info">
                 <p>answered by: {{ans.answeredByName}}</p>
