@@ -11,6 +11,11 @@ h3 {
     .question-form > mat-form-field {
         width: 90%;
     }
+    
+    .editor {
+        width: 90%;
+        margin-left: 5%;
+    }
 
     mat-form-field {
         margin: 5px auto;

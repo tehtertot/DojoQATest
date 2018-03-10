@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { QuillModule } from 'ngx-quill';
 
 //components
 import { AppComponent } from './app.component';
@@ -70,6 +71,7 @@ import { StripHtmlPipe } from './pipes/stripHtml.pipe';
     MaterialModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    QuillModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'home/login', pathMatch: 'full' },
       { path: 'home', component: HomeComponent, children: [

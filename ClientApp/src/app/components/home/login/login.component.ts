@@ -11,8 +11,8 @@ import { User } from '../../../models/User';
   styleUrls: ['../home.component.css']
 })
 export class LoginComponent {
-  public login: User = new User();
-  public loginerrors: string = null;
+  login: User = new User();
+  loginerrors: string = null;
 
   constructor(private _userService: UserService, private _router: Router) { 
   }
@@ -28,5 +28,10 @@ export class LoginComponent {
       localStorage.setItem('auth_token', token);
       this._userService.setLoggedInStatus(true);
       this._router.navigate(['/questions/all']);
+  }
+
+  showChanges() {
+      let x = document.getElementById("text").innerHTML;
+      console.log(x);
   }
 }

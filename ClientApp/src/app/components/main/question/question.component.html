@@ -2,7 +2,7 @@
     <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
         <div fxFlex="67%">
             <mat-toolbar-row class="question">
-                <h3>{{question.questionTitle}}</h3>
+                <h3 class="title">{{question.questionTitle}}</h3>
                 <span class="spacer"></span>
                 <button mat-raised-button class="votebutton" color="primary" [disabled]="!question.canVote" (click)="voteForQuestion(question.questionId)">+{{question.votes}}</button>
             </mat-toolbar-row>
@@ -37,11 +37,9 @@
 
     <mat-card>
         <form (submit)="submitAnswer(); answerForm.reset();" #answerForm="ngForm">
-            <mat-form-field hintLabel="at least 20 characters">
-                <textarea matInput name="content" required [(ngModel)]="newAnswer.answerText" #content="ngModel" minlength="20" placeholder="Add Your Answer"></textarea>
-                <mat-hint align="end">{{content.value?.length || 0}} characters</mat-hint>
-            </mat-form-field>
-            <button [disabled]="!answerForm.valid" mat-raised-button color="primary">Answer</button>      
+            <quill-editor [(ngModel)]="newAnswer.answerText" name="content" #content="ngModel"></quill-editor>
+            <br>
+            <button [disabled]="newAnswer.answerText && newAnswer.answerText.length < 20" mat-raised-button color="primary">Answer</button>      
         </form>
     </mat-card>
 </div>

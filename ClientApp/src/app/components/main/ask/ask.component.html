@@ -1,30 +1,26 @@
 <h3>Ask a Question</h3>
 <p class="showerror">{{error}}</p>
-<form (submit)="addQuestion()" #questionForm="ngForm" class="question-form">
+<form #questionForm="ngForm" class="question-form">
     <mat-form-field hintLabel="10-60 characters">
         <input matInput placeholder="Title" type="text" name="title" required [(ngModel)]="question.QuestionTitle" #title="ngModel" minlength="10" maxlength="60">
         <mat-hint align="end">{{title.value?.length || 0}} / 60</mat-hint>
     </mat-form-field>
-
-    <mat-form-field hintLabel="at least 20 characters">
-        <textarea matInput name="content" required [(ngModel)]="question.QuestionText" #content="ngModel" minlength="20" placeholder="Detailed Description"></textarea>
-        <mat-hint align="end">{{content.value?.length || 0}} characters</mat-hint>
-    </mat-form-field>
-
+    
     <div fxLayout fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap="10px" fxLayoutGap.xs="0" class="tags">
         <mat-form-field fxFlex="30%">
             <mat-select placeholder="Add Tags" [(ngModel)]="selectedCategory" name="category" (change)="updateTagsToShow()" required>
                 <mat-option *ngFor="let cat of tagList" value="{{cat.categoryName}}">{{cat.categoryName}}</mat-option>
             </mat-select>
         </mat-form-field>
-    
+        
         <mat-form-field fxFlex="70%">
             <mat-select [(ngModel)]="selectedTags" name="tags" multiple required>
                 <mat-option *ngFor="let t of filteredTagList.tags" value="{{t.tagId}}">{{t.tagName}}</mat-option>
             </mat-select>
         </mat-form-field>
     </div>
-
-    <button [disabled]="!questionForm.valid" mat-raised-button color="primary">Ask</button>
+    
+    <quill-editor class="editor" [(ngModel)]="question.QuestionText" name="content" #content="ngModel"></quill-editor>
+    <br>
+    <button [disabled]="!questionForm.valid" mat-raised-button color="primary" (click)="addQuestion()" >Ask</button>
 </form>
-   

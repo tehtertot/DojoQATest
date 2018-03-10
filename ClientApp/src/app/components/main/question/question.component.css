@@ -2,11 +2,11 @@
     padding: 5%;
 }
 
-.formatted-text {
-    white-space: pre-wrap;
+.title {
+    padding: 0;
+    margin-left: -3%;
 }
 
-/* all form fields */
 mat-form-field {
     width: 100%;
     margin: 20px auto;

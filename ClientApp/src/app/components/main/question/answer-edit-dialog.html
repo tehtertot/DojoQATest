@@ -1,11 +1,7 @@
 <h3>Edit Answer</h3>
 <form #questionForm="ngForm" class="question-form">
-    <input type="hidden" name="questionId" [(ngModel)]="data.questionId">
-    <mat-form-field hintLabel="at least 20 characters">
-        <textarea matInput name="content" required [(ngModel)]="data.content" #content="ngModel" minlength="20" placeholder="Detailed Description"></textarea>
-        <mat-hint align="end">{{content.value?.length || 0}} characters</mat-hint>
-    </mat-form-field>
-    
+    <quill-editor [(ngModel)]="data.content" name="content" #content="ngModel" minlength="20"></quill-editor>
+    <br>
     <button mat-raised-button (click)="cancel()">Cancel</button>
-    <button [disabled]="!questionForm.valid" mat-raised-button color="primary" [mat-dialog-close]="data">Update</button>
+    <button [disabled]="data.content && data.content.length < 20" mat-raised-button color="primary" [mat-dialog-close]="data">Update</button>
 </form>
