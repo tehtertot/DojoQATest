@@ -97,7 +97,7 @@ export class QuestionComponent implements OnInit {
     editAnswer(answerId): void {
         let dialogRef = this.qDialog.open(AnswerEditDialog, {
           width: '70%',
-          data: { questionId: this.question.questionId, content: this.question.answers.filter(a => a.answerId == answerId)[0].answerText }
+          data: { answerId: answerId, content: this.question.answers.filter(a => a.answerId == answerId)[0].answerText }
         });
     
         dialogRef.afterClosed().subscribe(result => {
@@ -106,7 +106,7 @@ export class QuestionComponent implements OnInit {
     }
 
     private updateAnswer(updated) {
-        this.answerUpdate.answerId = this.question.questionId;
+        this.answerUpdate.answerId = updated.answerId;
         this.answerUpdate.answerText = updated.content;
         this._questionService.updateAnswer(this.answerUpdate)
             .subscribe((res) => {

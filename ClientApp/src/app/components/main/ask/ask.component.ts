@@ -38,7 +38,6 @@ export class AskComponent implements OnInit {
         }
         else {
             this.question.QuestionTitle = this.question.QuestionTitle.trim();
-            this.question.QuestionText = document.getElementsByClassName("ql-editor")[0].innerHTML.toString();
             this.question.Tags = this.selectedTags;
             this._questionService.addQuestion(this.question)
                 .subscribe((res) => {

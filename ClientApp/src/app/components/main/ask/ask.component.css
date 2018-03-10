@@ -4,8 +4,13 @@
     text-align: center;
 }
 
-.editor, .question-form > mat-form-field {
+.question-form > mat-form-field {
     width: 90%;
+}
+
+.editor {
+    width: 90%;
+    margin-left: 5%;
 }
 
 mat-form-field {
