@@ -18,13 +18,12 @@ mat-chip {
   margin-right: 8px;
 }
 
-<<<<<<< HEAD
 .spacer { 
   flex: 1 1 auto;
-=======
+}
+
 .edit-icon {
   border-radius: 5px;
   border: .1px solid gray;
   padding: 2px;
->>>>>>> markup
 }
