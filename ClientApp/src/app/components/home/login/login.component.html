@@ -9,17 +9,3 @@
     <p class="showerror">{{loginerrors}}</p>
     <button class="submit-button" mat-raised-button color="primary" [disabled]="!loginForm.valid">Log In</button>
 </form>
-
-<mat-toolbar>
-    <mat-toolbar-row>
-        <span>Input Text</span>
-        <span class="flex-spacer"></span>
-        <mat-icon class="edit-icon mat-elevation-z3" (click)="showChanges()">format_bold</mat-icon>
-        <mat-icon class="edit-icon mat-elevation-z3">format_italic</mat-icon>
-        <mat-icon class="edit-icon mat-elevation-z3">format_underlined</mat-icon>
-        <span>&nbsp;|&nbsp;</span>
-        <mat-icon class="edit-icon mat-elevation-z3">insert_link</mat-icon>
-        <mat-icon class="edit-icon mat-elevation-z3">code</mat-icon>
-    </mat-toolbar-row>
-</mat-toolbar>
-<quill-editor></quill-editor>

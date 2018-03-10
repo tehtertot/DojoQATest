@@ -64,8 +64,7 @@ import { StripHtmlPipe } from './pipes/stripHtml.pipe';
     EqualValidator,
     TruncatePipe,
     SearchFilterPipe,
-    StripHtmlPipe,
-    QuillModule
+    StripHtmlPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -74,6 +73,7 @@ import { StripHtmlPipe } from './pipes/stripHtml.pipe';
     MaterialModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
+    QuillModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'home/login', pathMatch: 'full' },
       { path: 'feedback', component: FeedbackComponent },

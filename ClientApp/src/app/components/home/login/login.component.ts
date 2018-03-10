@@ -36,20 +36,4 @@ export class LoginComponent {
       let x = document.getElementById("text").innerHTML;
       console.log(x);
   }
-
-  // showSelectedText() {
-  //   if (window.getSelection) {
-  //       this.selectedText = window.getSelection().toString();
-  //       console.log(this.selectedText);
-  //   }
-  // }
-
-  // bold() {
-  //   console.log("bolding");
-  //   console.log(this.selectedText);
-  //   let x = this.inputText.replace(this.selectedText, `<b>${this.selectedText}</b>`);
-  //   console.log(x);
-  // }
-
-
 }

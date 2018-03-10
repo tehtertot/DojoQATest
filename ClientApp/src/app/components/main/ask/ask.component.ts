@@ -15,12 +15,12 @@ import { forEach } from '@angular/router/src/utils/collection';
     styleUrls: ['./ask.component.css']
 })
 export class AskComponent implements OnInit {
-    public question: Question = new Question();
-    public tagList: Array<CategoryTag>;
-    public filteredTagList: CategoryTag = new CategoryTag();
-    public selectedCategory: string = "";
-    public selectedTags: Array<number>;
-    public error: string = "";
+    question: Question = new Question();
+    tagList: Array<CategoryTag>;
+    filteredTagList: CategoryTag = new CategoryTag();
+    selectedCategory: string = "";
+    selectedTags: Array<number>;
+    error: string = "";
 
     constructor(private _questionService: QuestionService, private _router: Router) { }
             
@@ -31,17 +31,15 @@ export class AskComponent implements OnInit {
             });    
     }
 
-    public addQuestion() {
-        console.log("attempting to add");
+    public addQuestion(e) {
         if (this.question.QuestionText.trim() == "") {
             this.question.QuestionText = "";
             window.alert("Question cannot be empty");
         }
         else {
             this.question.QuestionTitle = this.question.QuestionTitle.trim();
-            this.question.QuestionText = this.question.QuestionText.trim();
+            this.question.QuestionText = document.getElementsByClassName("ql-editor")[0].innerHTML.toString();
             this.question.Tags = this.selectedTags;
-            console.log(this.question);
             this._questionService.addQuestion(this.question)
                 .subscribe((res) => {
                     if (res) {
