@@ -29,9 +29,4 @@ export class LoginComponent {
       this._userService.setLoggedInStatus(true);
       this._router.navigate(['/questions/all']);
   }
-
-  showChanges() {
-      let x = document.getElementById("text").innerHTML;
-      console.log(x);
-  }
 }

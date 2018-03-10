@@ -63,8 +63,8 @@ export class UserService {
     return this._http.post("/profile/changepw", user);
   }
 
-  uploadPhoto(photoFile) {
-    console.log(typeof photoFile);
-    return this._http.post("/profile/updatePic", {file: photoFile});
-  }
+  // uploadPhoto(photoFile) {
+  //   console.log(typeof photoFile);
+  //   return this._http.post("/profile/updatePic", {file: photoFile});
+  // }
 }

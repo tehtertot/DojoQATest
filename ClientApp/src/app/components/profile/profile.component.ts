@@ -43,15 +43,15 @@ export class ProfileComponent {
             (err) => this.pwmessage = "error updating password");
     }
 
-    changePic() {
-        let pic = this.picFile.nativeElement;
-        if (pic.files && pic.files[0]) {
-            let fileToUpload = pic.files[0];
-            console.log(fileToUpload);
-            this._userService.uploadPhoto(fileToUpload)
-                .subscribe(res => console.log(res), err => console.log(err));
-        }
-    }
+    // changePic() {
+    //     let pic = this.picFile.nativeElement;
+    //     if (pic.files && pic.files[0]) {
+    //         let fileToUpload = pic.files[0];
+    //         console.log(fileToUpload);
+    //         this._userService.uploadPhoto(fileToUpload)
+    //             .subscribe(res => console.log(res), err => console.log(err));
+    //     }
+    // }
 
     private setUser(fromServer: UserFromServer) {
         this.user.FirstName = fromServer.firstName;
