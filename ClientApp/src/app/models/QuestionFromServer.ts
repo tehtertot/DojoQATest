@@ -9,7 +9,7 @@ export class QuestionFromServer {
     askedByFirstName: string;
     askedByLastName: string;
     askedById: string;
-    createdAt: Date;
+    createdAt: string;
     answers: Answer[] = [];
     tagsString: string[] = [];
     stack: string;
@@ -22,5 +22,13 @@ export class QuestionFromServer {
             }
         });
         return contains;
+    }
+
+    testMethod() {
+        console.log('hello')
+    }
+
+    getCreatedAtDate() {
+        return new Date(parseInt(this.createdAt.substring(0,4)), parseInt(this.createdAt.substring(5,7)), parseInt(this.createdAt.substring(8,10)));
     }
 }

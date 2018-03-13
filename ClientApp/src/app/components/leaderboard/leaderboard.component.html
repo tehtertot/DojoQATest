@@ -16,6 +16,16 @@
                 <mat-option value="MEAN">MEAN</mat-option>
             </mat-select>
         </mat-form-field>
+        <mat-form-field>
+            <input matInput [matDatepicker]="sDate" [(ngModel)]="dateStart" placeholder="Filter By Date From" (ngModelChange)="updateDate()">
+            <mat-datepicker-toggle matSuffix [for]="sDate"><mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon></mat-datepicker-toggle>
+            <mat-datepicker #sDate></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput [matDatepicker]="eDate" [(ngModel)]="dateEnd" placeholder="To" (ngModelChange)="updateDate()">
+            <mat-datepicker-toggle matSuffix [for]="eDate"><mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon></mat-datepicker-toggle>
+            <mat-datepicker #eDate></mat-datepicker>
+        </mat-form-field>
     </div>
     <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="20px">
         <div fxFlex="40%">

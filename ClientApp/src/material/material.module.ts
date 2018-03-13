@@ -14,7 +14,10 @@ import { MatMenuModule,
         MatDividerModule,
         MatChipsModule,
         MatDialogModule,
-        MatCheckboxModule } from '@angular/material';
+        MatCheckboxModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MAT_DATE_LOCALE } from '@angular/material';
 
 @NgModule({
     imports: [
@@ -32,7 +35,9 @@ import { MatMenuModule,
         MatDividerModule,
         MatChipsModule,
         MatDialogModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ],
     exports: [
         MatMenuModule,
@@ -49,7 +54,9 @@ import { MatMenuModule,
         MatDividerModule,
         MatChipsModule,
         MatDialogModule,
-        MatCheckboxModule
+        MatCheckboxModule,
+        MatDatepickerModule,
+        MatNativeDateModule
     ]
 })
 
