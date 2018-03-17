@@ -14,8 +14,9 @@ export class LogoutComponent {
     constructor(private _userService: UserService, private _router: Router) { }
 
     ngOnInit() {
+        localStorage.clear();
         this._userService.setLoggedInStatus(false);
-        this._router.navigate(['/home/login']);
+        this._router.navigate(['/home']);
     }
     
 }

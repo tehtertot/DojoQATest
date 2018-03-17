@@ -42,6 +42,7 @@ import { EqualValidator } from './validators/equal.directive';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { SearchFilterPipe } from './pipes/searchfilter.pipe';
 import { StripHtmlPipe } from './pipes/stripHtml.pipe';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [

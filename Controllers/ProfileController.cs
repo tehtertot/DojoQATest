@@ -15,7 +15,7 @@ using System.IO;
 namespace DojoQA.Controllers
 {
     [Authorize(Policy = "ApiUser")]
-    [Route("/profile")]
+    [Route("/UserProfile")]
     public class ProfileController : Controller
     {
         private QAContext _context;
@@ -33,12 +33,21 @@ namespace DojoQA.Controllers
             return GetUser();
         }
 
-        [HttpGet("userid")]
+        [HttpGet("CheckToken")]
+        public bool CheckToken() {
+            if (GetUser() != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        [HttpGet("UserID")]
         public JsonResult GetUserId() {
             return Json(_caller.Claims.Single(c => c.Type == "id").Value);
         }
 
-        [HttpPost("update")]
+        [HttpPost("Update")]
         public ApplicationUser UpdateUser([FromBody] RegisterUser userInfo) {
             ApplicationUser user = GetUser();
 
@@ -55,7 +64,7 @@ namespace DojoQA.Controllers
             return user;
         }
 
-        [HttpPost("changepw")]
+        [HttpPost("ChangePW")]
         public async Task<IActionResult> ChangeUserPassword([FromBody] RegisterUser userInfo) {
             ApplicationUser user = GetUser();
             var updated = await _userManager.ChangePasswordAsync(user, userInfo.Password, userInfo.NewPassword);
@@ -65,7 +74,7 @@ namespace DojoQA.Controllers
             return BadRequest(false);
         }
 
-        [HttpPost("updatePic")]
+        [HttpPost("UpdatePic")]
         public void UploadPhoto([FromBody] IFormFile file) {
             if (file == null) throw new Exception("File is null");
             if (file.Length == 0) throw new Exception("File is empty");

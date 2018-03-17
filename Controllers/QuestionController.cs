@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 namespace DojoQA.Controllers
 {
     [Authorize(Policy = "ApiUser")]
-    [Route("/questions")]
+    [Route("/QuestionAPI")]
     public class QuestionController : Controller
     {
         private QAContext _context;
@@ -35,7 +35,7 @@ namespace DojoQA.Controllers
             return allQuestionsForView;
         }
 
-        [HttpPost("new")]
+        [HttpPost("New")]
         public bool addQuestion([FromBody] QuestionFromClient question) {
             string userId = _caller.Claims.Single(c => c.Type == "id").Value;
             ApplicationUser user = _context.Users.SingleOrDefault(u => u.Id == userId);
@@ -73,7 +73,7 @@ namespace DojoQA.Controllers
             return returnedQ;
         }
 
-        [HttpPost("edit")]
+        [HttpPost("Edit")]
         public bool editQuestion([FromBody] QuestionFromClient question) {
             try {
                 Question qToUpdate = _context.Questions.Single(q => q.QuestionId == question.QuestionId);
@@ -87,7 +87,7 @@ namespace DojoQA.Controllers
             }
         }
 
-        [HttpGet("vote/{id:int}")]
+        [HttpGet("Vote/{id:int}")]
         public bool upvoteQuestion(int id) {
             string userId = _caller.Claims.Single(c => c.Type == "id").Value;
             Question question = _context.Questions.SingleOrDefault(q => q.QuestionId == id);
@@ -106,7 +106,7 @@ namespace DojoQA.Controllers
         }
 
         // **************************** ANSWERS ********************************* //
-        [HttpPost("answer/{id:int}")]
+        [HttpPost("Answer/{id:int}")]
         public QuestionWithAnswersViewModel addAnswer([FromBody] AnswerView answer, int id) {
             string userId = _caller.Claims.Single(c => c.Type == "id").Value;
             ApplicationUser user = _context.Users.SingleOrDefault(u => u.Id == userId);
@@ -120,7 +120,7 @@ namespace DojoQA.Controllers
             return new QuestionWithAnswersViewModel(_context.Questions.Include(q => q.AskedBy).Include(q => q.Answers).Include(q => q.Tags).ThenInclude(t => t.Tag).ThenInclude(x => x.StackCategory).Single(q => q.QuestionId == id));
         }
 
-        [HttpPost("answer/edit")]
+        [HttpPost("Answer/Edit")]
         public bool editAnswer([FromBody] AnswerView answer) {
             try {
                 Answer aToUpdate = _context.Answers.Single(a => a.AnswerId == answer.AnswerId);
@@ -133,7 +133,7 @@ namespace DojoQA.Controllers
             }
         }
 
-        [HttpGet("answer/delete/{id:int}")]
+        [HttpGet("Answer/Delete/{id:int}")]
         public bool deleteAnswer(int id) {
             string userId = _caller.Claims.Single(c => c.Type == "id").Value;
             ApplicationUser user = _context.Users.SingleOrDefault(u => u.Id == userId);
@@ -148,7 +148,7 @@ namespace DojoQA.Controllers
             return false;
         }
 
-        [HttpGet("answer/vote/{id:int}")]
+        [HttpGet("Answer/Vote/{id:int}")]
         public bool upvoteAnswer(int id) {
             string userId = _caller.Claims.Single(c => c.Type == "id").Value;
             Answer answer = _context.Answers.SingleOrDefault(a => a.AnswerId == id);
@@ -167,7 +167,7 @@ namespace DojoQA.Controllers
         }
 
         // ******************************* TAGS ********************************* //
-        [HttpGet("tags")]
+        [HttpGet("Tags")]
         public List<CategoryWithTagsViewModel> getAllTagsWithCategories() {
             List<StackCategory> allCategories = _context.StackCategories.Include(c => c.AssociatedTags).OrderBy(c => c.SortOrder).ToList();
             List<CategoryWithTagsViewModel> categoriesWithTags = new List<CategoryWithTagsViewModel>();

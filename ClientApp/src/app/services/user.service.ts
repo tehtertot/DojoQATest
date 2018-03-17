@@ -36,7 +36,7 @@ export class UserService {
   }
 
   setUserId() : Observable<string> {
-    return this._http.get<string>('/profile/userid');
+    return this._http.get<string>('/UserProfile/UserID');
   }
 
   getUserId() : string | null {
@@ -44,23 +44,27 @@ export class UserService {
   }
 
   registerUser(user: User): Observable<Token> {
-    return this._http.post<Token>('/register', user);
+    return this._http.post<Token>('/RegisterUser', user);
   }
 
   loginUser(user: User): Observable<Token> {
-    return this._http.post<Token>('/login', user);
+    return this._http.post<Token>('/LoginUser', user);
   }
 
   getUserInfo(): Observable<UserFromServer> {    
-    return this._http.get<UserFromServer>("/profile");
+    return this._http.get<UserFromServer>("/UserProfile");
   }
 
   updateUser(user: User): Observable<UserFromServer> {
-    return this._http.post<UserFromServer>("/profile/update", user);
+    return this._http.post<UserFromServer>("/UserProfile/Update", user);
   }
 
   updatePassword(user: User): Observable<any> {
-    return this._http.post("/profile/changepw", user);
+    return this._http.post("/UserProfile/ChangePW", user);
+  }
+
+  checkToken(): Observable<boolean> {
+    return this._http.get<boolean>("/UserProfile/CheckToken");
   }
 
   // uploadPhoto(photoFile) {

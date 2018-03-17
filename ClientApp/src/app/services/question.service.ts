@@ -17,45 +17,45 @@ export class QuestionService {
 
   //*********** QUESTIONS *************//
   getAllQuestions(): Observable<Array<QuestionFromServer>> {
-    return this._http.get<Array<QuestionFromServer>>("/questions");
+    return this._http.get<Array<QuestionFromServer>>("/QuestionAPI");
   }
 
   addQuestion(question: Question) : Observable<boolean> {
-    return this._http.post<boolean>('/questions/new', question);
+    return this._http.post<boolean>('/QuestionAPI/New', question);
   }
 
   getQuestion(id: string | null): Observable<QuestionFromServer> {
-    return this._http.get<QuestionFromServer>(`/questions/${id}`);
+    return this._http.get<QuestionFromServer>(`/QuestionAPI/${id}`);
   }
 
   updateQuestion(question: Question) : Observable<boolean> {
-    return this._http.post<boolean>("/questions/edit", question);
+    return this._http.post<boolean>("/QuestionAPI/Edit", question);
   }
 
   voteForQuestion(questionId: number) : Observable<boolean> {
-    return this._http.get<boolean>(`/questions/vote/${questionId}`);
+    return this._http.get<boolean>(`/QuestionAPI/Vote/${questionId}`);
   }
 
   //************ ANSWERS **************//
   addAnswer(answer: Answer, id: number) : Observable<QuestionFromServer> {
-    return this._http.post<QuestionFromServer>(`/questions/answer/${id}`, answer);
+    return this._http.post<QuestionFromServer>(`/QuestionAPI/Answer/${id}`, answer);
   }
 
   updateAnswer(answer: Answer) : Observable<boolean> {
-    return this._http.post<boolean>("/questions/answer/edit", answer);
+    return this._http.post<boolean>("/QuestionAPI/Answer/Edit", answer);
   }
 
   voteForAnswer(answerId: number) : Observable<boolean> {
-    return this._http.get<boolean>(`/questions/answer/vote/${answerId}`);
+    return this._http.get<boolean>(`/QuestionAPI/Answer/Vote/${answerId}`);
   }
 
   deleteAnswer(answerId: number) : Observable<boolean> {
-    return this._http.get<boolean>(`/questions/answer/delete/${answerId}`);
+    return this._http.get<boolean>(`/QuestionAPI/Answer/Delete/${answerId}`);
   }
 
   //************** TAGS ***************//
   getAllTags(): Observable<Array<CategoryTag>> {
-    return this._http.get<Array<CategoryTag>>("/questions/tags");
+    return this._http.get<Array<CategoryTag>>("/QuestionAPI/Tags");
   }
 
   // getTagsByCategory(category: string): Observable<CategoryTag> {

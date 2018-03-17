@@ -122,8 +122,11 @@ namespace DojoQA
             // {
             //     routes.MapRoute(
             //         name: "default",
-            //         template: "{controller}/{action=Index}/{id?}");
+            //         template: "{controller=Home}/{action=Index}/{id?}");
             // });
+            // app.UseMvc(routes => routes.MapSpaFallbackRoute(name: "spa-fallback",
+                // defaults: new { controller = "Home", action = "Index" }));
+
             app.UseMvc();
 
             app.UseSpa(spa =>
@@ -138,6 +141,7 @@ namespace DojoQA
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+            
         }
     }
 }

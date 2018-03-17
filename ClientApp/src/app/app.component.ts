@@ -20,7 +20,7 @@ export class AppComponent {
   feedback: Feedback = new Feedback();
 
   constructor(private _userService: UserService, public qDialog: MatDialog, private _feedbackService: FeedbackService) {
-    _userService.loggedInStatus.subscribe(status => this.loggedIn = status);
+    this._userService.loggedInStatus.subscribe(status => this.loggedIn = status);
   }
 
   openFeedback(): void {

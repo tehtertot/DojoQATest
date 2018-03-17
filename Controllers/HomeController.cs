@@ -27,14 +27,14 @@ namespace DojoQA.Controllers
             _jwtOptions = jwo.Value;
         }
 
-        [AllowAnonymous]
-        public IActionResult Index()
-        {
-            //send up Dojo list to populate dropdown selection
-            return View();
-        }
+        // [AllowAnonymous]
+        // public IActionResult Index()
+        // {
+        //     //send up Dojo list to populate dropdown selection
+        //     return View();
+        // }
 
-        [HttpPost("/register")]
+        [HttpPost("/RegisterUser")]
         [AllowAnonymous]
         // [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegisterUser([FromBody] RegisterUser user)
@@ -61,7 +61,7 @@ namespace DojoQA.Controllers
             return BadRequest(ModelState);
         }
 
-        [HttpPost("/login")]
+        [HttpPost("/LoginUser")]
         [AllowAnonymous]
         public async Task<IActionResult> LogInUser([FromBody] LoginUser login) {
             
