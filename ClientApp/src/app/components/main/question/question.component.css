@@ -4,7 +4,6 @@
 
 .title {
     padding: 0;
-    /* margin-left: -3%; */
 }
 
 mat-form-field {
@@ -29,7 +28,6 @@ mat-form-field {
 
 /* answers */
 mat-card {
-    /* margin-left: 5%; */
     width: 95%;
     margin-top: 20px;
 }
