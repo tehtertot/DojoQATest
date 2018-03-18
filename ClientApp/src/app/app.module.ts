@@ -30,7 +30,6 @@ import { AllQuestionsResolver } from './services/allquestions.resolve.service';
 import { SingleQuestionResolver } from './services/question.resolve.service';
 import { UserService } from './services/user.service';
 import { QuestionService } from './services/question.service';
-import { LeaderboardService } from './services/leaderboard.service';
 import { FeedbackService } from './services/feedback.service';
 import { AuthGuard } from './services/auth.guard';
 import { UserAuthInterceptor } from './services/userauth.interceptor';
@@ -42,7 +41,6 @@ import { EqualValidator } from './validators/equal.directive';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { SearchFilterPipe } from './pipes/searchfilter.pipe';
 import { StripHtmlPipe } from './pipes/stripHtml.pipe';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -95,7 +93,6 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
     AuthGuard,
     UserService,
     QuestionService,
-    LeaderboardService,
     FeedbackService,
     AllQuestionsResolver,
     SingleQuestionResolver,
