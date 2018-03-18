@@ -12,7 +12,7 @@
         <mat-divider [vertical]="true" fxFlex="3%"></mat-divider>
         <div fxFlex="30%" class="info">
             <p>asked by: {{question.askedByFirstName}} {{question.askedByLastName}}</p>
-            <p>asked on: {{question.createdAt | date: 'dd MMM yy h:mm a'}}</p>
+            <p>asked on: {{question.createdAt | date: 'medium'}}</p>
             <p><button mat-button color="warn" (click)="editQuestion()" *ngIf="question.askedById==userId">Edit</button></p>
         </div>
     </div>
@@ -23,7 +23,7 @@
             <mat-divider [vertical]="true"></mat-divider>
             <div fxFlex="33%" class="info">
                 <p>answered by: {{ans.answeredByName}}</p>
-                <p>answered on: {{ans.answeredDate | date: 'dd MMM yy h:mm a'}}</p>
+                <p>answered on: {{ans.answeredDate | date: 'medium'}}</p>
                 <p *ngIf="ans.answeredById==userId">
                     <button mat-button color="warn" (click)="editAnswer(ans.answerId)">Edit</button> | 
                     <button mat-button color="warn" (click)="deleteAnswer(ans.answerId)">Delete</button>

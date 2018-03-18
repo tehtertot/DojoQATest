@@ -6,7 +6,6 @@ import { MatTableDataSource } from '@angular/material';
 import * as _ from 'underscore';
 //models
 import { Leader } from '../../models/Leader';
-import { LeaderboardService } from '../../services/leaderboard.service';
 import { QuestionFromServer } from '../../models/QuestionFromServer';
 import { StackMonth } from '../../models/StackMonth';
 import { Answer } from '../../models/Answer';
@@ -32,7 +31,7 @@ export class LeaderboardComponent implements OnInit {
     //potential filters
     private monthFilter: StackMonth;
 
-    constructor(private _leaderboardService: LeaderboardService, private _route: ActivatedRoute) {
+    constructor(private _route: ActivatedRoute) {
     }
     
     ngOnInit() {
