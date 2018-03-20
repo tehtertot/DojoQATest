@@ -8,6 +8,7 @@ import { MaterialModule } from '../material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { QuillModule } from 'ngx-quill';
+import { AppRoutingModule } from './app-routing.module';
 
 //components
 import { AppComponent } from './app.component';
@@ -26,12 +27,9 @@ import { MainComponent } from './components/main/main.component';
     import { AnswerEditDialog } from './components/main/question/question.component';
 
 //services
-import { AllQuestionsResolver } from './services/allquestions.resolve.service';
-import { SingleQuestionResolver } from './services/question.resolve.service';
 import { UserService } from './services/user.service';
 import { QuestionService } from './services/question.service';
 import { FeedbackService } from './services/feedback.service';
-import { AuthGuard } from './services/auth.guard';
 import { UserAuthInterceptor } from './services/userauth.interceptor';
 
 //validators
@@ -71,31 +69,12 @@ import { StripHtmlPipe } from './pipes/stripHtml.pipe';
     BrowserAnimationsModule,
     FlexLayoutModule,
     QuillModule,
-    RouterModule.forRoot([
-      { path: '', redirectTo: 'home/login', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent, children: [
-          { path:'', redirectTo: 'login', pathMatch: 'full' },
-          { path: 'login', component: LoginComponent },
-          { path: 'registration', component: RegistrationComponent }
-      ] },
-      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-      { path: 'questions', component: MainComponent, canActivate: [AuthGuard], children: [
-          { path: 'all', component: QuestionsComponent, resolve: { allQuestions: AllQuestionsResolver } },
-          { path: 'ask', component: AskComponent },
-          { path: ':id', component: QuestionComponent, resolve: { question: SingleQuestionResolver }}
-      ] },
-      { path: 'leaderboard', component: LeaderboardComponent, canActivate: [AuthGuard], resolve: { allQuestions: AllQuestionsResolver} },
-      { path: 'logout', component: LogoutComponent },
-      { path: '**', redirectTo: 'home/login' }
-    ])
+    AppRoutingModule
   ],
   providers: [
-    AuthGuard,
     UserService,
     QuestionService,
     FeedbackService,
-    AllQuestionsResolver,
-    SingleQuestionResolver,
     {provide: HTTP_INTERCEPTORS,
      useClass: UserAuthInterceptor,
      multi:true}
