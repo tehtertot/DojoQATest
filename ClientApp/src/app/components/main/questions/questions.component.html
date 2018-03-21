@@ -37,7 +37,7 @@
                 </div>
             </div>
             <p class="smallinfo">Asked by {{q.askedByFirstName}} {{q.askedByLastName}}</p>
-            <p class="smallinfo">{{q.createdAt | date: 'medium' }}</p>
+            <p class="smallinfo">{{q.createdAt | localDate }}</p>
         </div>
     </mat-card-content>  
 </mat-card>

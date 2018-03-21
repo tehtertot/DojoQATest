@@ -37,8 +37,9 @@ import { EqualValidator } from './validators/equal.directive';
 
 //pipes
 import { TruncatePipe } from './pipes/truncate.pipe';
-import { SearchFilterPipe } from './pipes/searchfilter.pipe';
-import { StripHtmlPipe } from './pipes/stripHtml.pipe';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { StripHtmlPipe } from './pipes/strip-html.pipe';
+import { LocalDatePipe } from './pipes/local-date.pipe';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { StripHtmlPipe } from './pipes/stripHtml.pipe';
     EqualValidator,
     TruncatePipe,
     SearchFilterPipe,
-    StripHtmlPipe
+    StripHtmlPipe,
+    LocalDatePipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
