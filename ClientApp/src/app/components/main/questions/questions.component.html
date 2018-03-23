@@ -16,7 +16,6 @@
         </span>
     </p>
 </div> -->
-
 <mat-card *ngFor="let q of allQuestions | searchfilter:searchStr:searchStack:searchTags" [routerLink]="['/questions', q.questionId]">
     <mat-card-content class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
         <mat-divider [vertical]="true"></mat-divider>

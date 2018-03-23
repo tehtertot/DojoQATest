@@ -40,6 +40,7 @@ import { TruncatePipe } from './pipes/truncate.pipe';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { StripHtmlPipe } from './pipes/strip-html.pipe';
 import { LocalDatePipe } from './pipes/local-date.pipe';
+import { LeaderboardPipe } from './pipes/leaderboard.pipe';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { LocalDatePipe } from './pipes/local-date.pipe';
     TruncatePipe,
     SearchFilterPipe,
     StripHtmlPipe,
-    LocalDatePipe
+    LocalDatePipe,
+    LeaderboardPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

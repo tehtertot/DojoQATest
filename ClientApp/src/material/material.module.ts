@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 
-import { MatMenuModule,
+import { 
         MatButtonModule,
         MatToolbarModule,
         MatIconModule,
@@ -16,12 +16,11 @@ import { MatMenuModule,
         MatDialogModule,
         MatCheckboxModule,
         MatDatepickerModule,
-        MatNativeDateModule,
-        MAT_DATE_LOCALE } from '@angular/material';
+        MatNativeDateModule
+    } from '@angular/material';
 
 @NgModule({
     imports: [
-        MatMenuModule,
         MatButtonModule,
         MatToolbarModule,
         MatIconModule,
@@ -40,7 +39,6 @@ import { MatMenuModule,
         MatNativeDateModule
     ],
     exports: [
-        MatMenuModule,
         MatButtonModule,
         MatToolbarModule,
         MatIconModule,

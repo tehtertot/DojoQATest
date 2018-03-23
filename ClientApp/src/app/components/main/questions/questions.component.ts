@@ -9,6 +9,7 @@ import { UserService } from '../../../services/user.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SimpleTag } from '../../../models/SimpleTag';
 import { forEach } from '@angular/router/src/utils/collection';
+import { PageEvent } from '@angular/material';
 
 @Component({
     selector: 'questions',
@@ -16,17 +17,17 @@ import { forEach } from '@angular/router/src/utils/collection';
     styleUrls: ['./questions.component.css']
 })
 export class QuestionsComponent {
-    public allQuestions: Array<QuestionFromServer>;
+    allQuestions: Array<QuestionFromServer>;
 
     //for filtering
-    public searchStr: string = "";
+    searchStr: string = "";
     //by stack
-    public allStacks: Array<CategoryTag>;
-    public searchStack: string;
+    allStacks: Array<CategoryTag>;
+    searchStack: string;
     //by tags
-    public allTags: Array<CategoryTag>;
-    public filteredTagList: CategoryTag = new CategoryTag();
-    public searchTags = new Array<SimpleTag>();
+    allTags: Array<CategoryTag>;
+    filteredTagList: CategoryTag = new CategoryTag();
+    searchTags = new Array<SimpleTag>();
 
     constructor(private _questionService: QuestionService, private _userService: UserService, private _router: Router, private _route: ActivatedRoute) { 
     }
