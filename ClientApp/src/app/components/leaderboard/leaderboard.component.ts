@@ -31,4 +31,10 @@ export class LeaderboardComponent implements OnInit {
     ngOnInit() {
         this.allQuestions = this._route.snapshot.data.allQuestions;
     }
+
+    resetFilters() {
+        this.dateStart = null;
+        this.dateEnd = null;
+        this.stackFilter = "";
+    }
 }

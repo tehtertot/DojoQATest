@@ -5,6 +5,7 @@
 </mat-toolbar>
 
 <div class="container">
+    <!-- filter by -->
     <div class="filter">
         <mat-form-field>
             <mat-select [(ngModel)]="stackFilter" placeholder="Filter by Stack" name="stack">
@@ -26,7 +27,9 @@
             <mat-datepicker-toggle matSuffix [for]="eDate"><mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon></mat-datepicker-toggle>
             <mat-datepicker #eDate></mat-datepicker>
         </mat-form-field>
+        <button mat-button color="basic" (click)="resetFilters()">Reset</button>
     </div>
+    <!-- questions -->
     <div fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="20px">
         <div fxFlex="40%">
             <h3>Top Seekers</h3>
@@ -45,6 +48,7 @@
             </mat-table>
         </div>
         <mat-divider vertical="true"></mat-divider>
+        <!-- answers -->
         <div fxFlex="40%">
             <h3>Top Finders</h3>
                 <mat-table [dataSource]="allQuestions | leaderboard: 'answer':stackFilter:dateStart:dateEnd">
