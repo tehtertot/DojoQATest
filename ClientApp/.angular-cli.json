@@ -19,7 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "teal-blue-theme.scss",
+        "teal-indigo-theme.scss",
         "styles.css"
       ],
       "scripts": [

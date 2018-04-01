@@ -4,7 +4,7 @@
             <mat-toolbar-row class="question">
                 <h3 class="title">{{question.questionTitle}}</h3>
                 <span class="spacer"></span>
-                <button mat-raised-button class="votebutton" color="primary" [disabled]="!question.canVote" (click)="voteForQuestion(question.questionId)">+{{question.votes}}</button>
+                <button mat-raised-button class="votebutton" color="accent" [disabled]="!question.canVote" (click)="voteForQuestion(question.questionId)">+{{question.votes}}</button>
             </mat-toolbar-row>
             <p [innerHTML]="question.questionText"></p>
             <p class="taginfo">Tags: <mat-chip *ngIf="question.stack" color="primary" selected="false">{{question.stack}}</mat-chip> <mat-chip selected="false" color="accent" *ngFor="let t of question.tagsString">{{t}}</mat-chip> </p>
@@ -28,7 +28,7 @@
                     <button mat-button color="warn" (click)="editAnswer(ans.answerId)">Edit</button> | 
                     <button mat-button color="warn" (click)="deleteAnswer(ans.answerId)">Delete</button>
                 </p>
-                <button mat-raised-button color="primary" (click)="voteForAnswer(ans.answerId)">+{{ans.votes}}</button>
+                <button mat-raised-button color="accent" (click)="voteForAnswer(ans.answerId)">+{{ans.votes}}</button>
             </div>
         </mat-card-content>
     </mat-card>
