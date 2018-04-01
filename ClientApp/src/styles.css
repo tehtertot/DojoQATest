@@ -1,12 +1,9 @@
-@import '~@angular/material/prebuilt-themes/indigo-pink.css';
-
 .showerror {
   color: darkred;
   font-style: italic;
   margin: 10px auto;
   font-size: 80%;
 }
-
 
 .flex-spacer {
   flex-grow: 1;
